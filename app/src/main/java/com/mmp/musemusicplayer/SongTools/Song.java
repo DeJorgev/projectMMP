@@ -1,4 +1,4 @@
-package com.mmp.musemusicplayer;
+package com.mmp.musemusicplayer.SongTools;
 
 import android.net.Uri;
 

@@ -1,4 +1,4 @@
-package com.mmp.musemusicplayer.ui.main;
+package com.mmp.musemusicplayer.Fragments;
 
 import android.content.Context;
 
@@ -29,7 +29,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        return AllSongsFragment.newInstance();
     }
 
     @Nullable
@@ -38,10 +38,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         return mContext.getResources().getString(TAB_TITLES[position]);
     }
 
-    // Show The total number pages.
     @Override
     public int getCount() {
-
+        // Show 2 total pages.
         return 2;
     }
 }

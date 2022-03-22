@@ -1,4 +1,4 @@
-package com.mmp.musemusicplayer;
+package com.mmp.musemusicplayer.SongTools;
 
 import android.content.ContentUris;
 import android.content.Context;
@@ -15,26 +15,10 @@ import java.util.List;
 
 //Provides Methods for fetching Songs
 public class SongFetcher {
-    int sortTipe;
-    Context actualClass;
-    String [] songNames;
+   private Context actualClass;
 
-    public SongFetcher(int sortTipe, Context actualClass) {
-        this.sortTipe = sortTipe;
+    public SongFetcher(Context actualClass) {
         this.actualClass = actualClass;
-    }
-
-    //Displays the results of manageSongsFetch() on a list view item using (For the moment) a default adapter.
-    public void displaySongs(ListView songListView){
-        List<Song> songsInDevice = manageSongsFetch();
-
-        songNames = new String [songsInDevice.size()];
-
-        for (int i = 0; i < songNames.length; i++)
-            songNames[i] = songsInDevice.get(i).getName();
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(actualClass, android.R.layout.simple_list_item_1,songNames);
-        songListView.setAdapter(arrayAdapter);
     }
 
     //Groups the necessary code in a more readable and comprehensive way, or so I hope.
@@ -73,13 +57,7 @@ public class SongFetcher {
         return projection;
     }
 
-    //TODO: Add a switch with different types of sorts dependant of the parameter value
-    private String generateSortOrder(){
-        String sortOrder = MediaStore.Audio.Media.DISPLAY_NAME + "ASC";
-
-        return sortOrder;
-    }
-
+    //Does the actual Query expecified in the projection, extracts the metadata and saves it in an List of Songs.
     private List<Song> fetchSongs(Uri songFolderUri,String [] projection,String sortOrder){
         List<Song> songsList = new ArrayList<>();
 
@@ -113,5 +91,4 @@ public class SongFetcher {
         }
         return songsList;
     }
-
 }
