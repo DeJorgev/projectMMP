@@ -30,7 +30,8 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="609dp"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/status_bar_item_app_background"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </com.google.android.material.appbar.AppBarLayout>

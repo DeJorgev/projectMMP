@@ -13,6 +13,8 @@ import com.mmp.musemusicplayer.R;
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
+ *
+ * Basically this class manages the fragment selection.
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -27,8 +29,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
+
+        //todo: añadir un switch o if/else para cambiar entre los fragmentos segun la posicion de estos. De momento solo tenemos uno.
         return AllSongsFragment.newInstance();
     }
 
