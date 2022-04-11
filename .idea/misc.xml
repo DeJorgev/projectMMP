@@ -3,13 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/activity_main.xml" value="0.21910112359550563" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/fragment_all_songs.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/fragment_all_songs_fragments.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/fragment_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/fragment_item3.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/fragment_item_list.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/fragment_item_list2.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/fragment_item_list3.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/fragment_main.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MuseMusicPlayer/app/src/main/res/layout/fragment_main.xml" value="0.5" />
+        <entry key="..\:/Users/Borja/Desktop/PruebaGit/projectMMP/app/src/main/res/layout/activity_album.xml" value="0.2767210144927536" />
+        <entry key="..\:/Users/Borja/Desktop/PruebaGit/projectMMP/app/src/main/res/layout/activity_main.xml" value="0.16117216117216118" />
+        <entry key="..\:/Users/Borja/Desktop/PruebaGit/projectMMP/app/src/main/res/layout/fragment_all_album.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/Borja/Desktop/PruebaGit/projectMMP/app/src/main/res/layout/fragment_all_album_list.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/Borja/Desktop/PruebaGit/projectMMP/app/src/main/res/layout/fragment_all_songs.xml" value="0.21927083333333333" />
       </map>
     </option>
   </component>

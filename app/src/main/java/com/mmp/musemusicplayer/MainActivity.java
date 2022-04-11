@@ -1,46 +1,58 @@
 package com.mmp.musemusicplayer;
 
 import android.Manifest;
-import android.content.ContentUris;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
-
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.mmp.musemusicplayer.ui.main.SectionsPagerAdapter;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.material.tabs.TabLayout;
+import com.mmp.musemusicplayer.Fragments.SectionsPagerAdapter;
+import com.mmp.musemusicplayer.SongTools.Album;
+import com.mmp.musemusicplayer.SongTools.Song;
+import com.mmp.musemusicplayer.SongTools.SongFetcher;
 import com.mmp.musemusicplayer.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
 
 public class MainActivity extends AppCompatActivity {
-
     private ActivityMainBinding binding;
+    private Button next;
+    private Button prev;
 
-    private List<Song> DeviceSongs;
+    private static List<Song> deviceSongs;
+    public static List<Song> getDeviceSongs() {
+        return deviceSongs;
+    }
 
-    public List<Song> getDeviceSongs() {
-        return DeviceSongs;
+    private static List<Album> deviceAlbums;
+    public static List<Album> getDeviceAlbums() {
+        return deviceAlbums;
+    }
+
+    private static ExoPlayer player;
+    public static ExoPlayer getExoPlayer() {
+        return player;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            EasyPermissions.requestPermissions(MainActivity.this, "Requesting permission to access storage", 102, Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        SongFetcher fetcher = new SongFetcher(MainActivity.this);
+        deviceSongs = fetcher.manageSongsFetch();
+        deviceAlbums = fetcher.getAlbums();
+        player = new ExoPlayer.Builder(MainActivity.this).build();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -51,20 +63,27 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
 
-        FloatingActionButton fab = binding.fab;
-        //Esto es el evento al pulsar el icono del mensaje.
-        fab.setOnClickListener(new View.OnClickListener() {
+        prev = findViewById(R.id.prev);
+        prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                player.seekToPrevious();
             }
         });
 
-        if (!EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            EasyPermissions.requestPermissions(MainActivity.this, "Requesting permission to access storage", 102, Manifest.permission.READ_EXTERNAL_STORAGE);
-        }
-        DeviceSongs = new SongFetcher(0, MainActivity.this).manageSongsFetch();
+        next = findViewById(R.id.next);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                player.seekToNext();
+            }
+        });
+
+
+    }
+
+    public void showtoast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     //Various
