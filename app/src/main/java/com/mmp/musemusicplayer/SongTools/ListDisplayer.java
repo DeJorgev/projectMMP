@@ -7,11 +7,11 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class SongDisplayer {
+public class ListDisplayer {
 
     private Context actualClass;
 
-    public SongDisplayer(Context actualClass) {
+    public ListDisplayer(Context actualClass) {
         this.actualClass = actualClass;
     }
 

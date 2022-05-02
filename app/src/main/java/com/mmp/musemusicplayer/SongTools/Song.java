@@ -27,6 +27,7 @@ public class Song  implements Parcelable {
         duration = in.readInt();
         name = in.readString();
         albumName = in.readString();
+        songUri = Uri.parse(in.readString());
     }
 
     public static final Creator<Song> CREATOR = new Creator<Song>() {
@@ -81,5 +82,6 @@ public class Song  implements Parcelable {
         parcel.writeInt(duration);
         parcel.writeString(name);
         parcel.writeString(albumName);
+        parcel.writeString(songUri.toString());
     }
 }

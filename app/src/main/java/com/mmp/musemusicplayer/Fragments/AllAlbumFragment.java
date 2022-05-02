@@ -1,6 +1,5 @@
 package com.mmp.musemusicplayer.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,14 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.mmp.musemusicplayer.AlbumActivity;
 import com.mmp.musemusicplayer.MainActivity;
 import com.mmp.musemusicplayer.R;
 import com.mmp.musemusicplayer.SongTools.Album;
-import com.mmp.musemusicplayer.SongTools.Song;
-import com.mmp.musemusicplayer.SongTools.SongDisplayer;
+import com.mmp.musemusicplayer.SongTools.ListDisplayer;
 
 import java.util.List;
 
@@ -46,10 +42,11 @@ public class AllAlbumFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Album al = deviceAlbums.get(i);
-                Intent intent = new Intent(getActivity(), AlbumActivity.class);
-                intent.putExtra("album",al);
-                Toast.makeText(getContext(),al.getSongs().size()+"", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                AlbumDetail ad_fragment = AlbumDetail.newInstance(al);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_placeholder, ad_fragment)
+                        .addToBackStack(null)
+                        .commit();
 
             }
         });
@@ -60,7 +57,7 @@ public class AllAlbumFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_all_album, container, false);
         albumListView  =  view.findViewById(R.id.albumListView);
-        new SongDisplayer(getActivity()).displayAlbums(albumListView,deviceAlbums);
+        new ListDisplayer(getActivity()).displayAlbums(albumListView,deviceAlbums);
 
         return view;
     }

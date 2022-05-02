@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.mmp.musemusicplayer.SongTools.Song;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,6 +93,7 @@ public class SongFetcher {
             int nameColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DISPLAY_NAME);
             int durationColumn= cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION);
             int albumIDColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID);
+            int albumName = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM);
 
             //getting the actual values for each column of each file read and applied
             while(cursor.moveToNext()){
@@ -99,6 +102,7 @@ public class SongFetcher {
                 String name = cursor.getString(nameColumn);
                 int duration = cursor.getInt(durationColumn);
                 long albumID = cursor.getLong(albumIDColumn);
+                String alName = cursor.getString(albumName);
 
                 Uri songuri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
                 Uri albumImageUri = ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), albumID);
@@ -107,7 +111,7 @@ public class SongFetcher {
                 name = name.substring(0,name.lastIndexOf("."));
 
                 //Creating and adding song Item to List
-                Song song = new Song(id, albumID, duration, name, songuri,albumImageUri);
+                Song song = new Song(id, albumID, duration, name, alName, songuri,albumImageUri);
                 songsList.add(song);
             }
         }
