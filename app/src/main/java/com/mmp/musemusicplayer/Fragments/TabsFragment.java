@@ -15,6 +15,12 @@ import com.google.android.material.tabs.TabLayout;
 import com.mmp.musemusicplayer.MainActivity;
 import com.mmp.musemusicplayer.R;
 
+/**
+ * A [FragmentPagerAdapter] that returns a fragment corresponding to
+ * one of the sections/tabs/pages.
+ *
+ * Basically this class manages the fragment selection.
+ */
 public class TabsFragment extends Fragment {
 
 
