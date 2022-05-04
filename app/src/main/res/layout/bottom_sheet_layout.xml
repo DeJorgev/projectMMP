@@ -41,8 +41,8 @@
 
         <ImageButton
             android:id="@+id/play_pause"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="17dp"
             android:background="@null"
             android:src="@mipmap/play3x" />
