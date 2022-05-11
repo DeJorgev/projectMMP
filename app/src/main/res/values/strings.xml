@@ -3,6 +3,24 @@
     <string name="tabs_Description">tabs</string>
     <string name="tab_text_1">All Songs</string>
     <string name="tab_text_2">Album</string>
+
+    <string name="song_name">Song Name</string>
+    <string name="song_info">Song info</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Accessibility -->
+    <string name="contextPlay">Play music</string>
+    <string name="contextMiniPlay">Mini play music</string>
+    <string name="contextStop">Stop music</string>
+    <string name="contextNext">Next song</string>
+    <string name="contextMiniNext">Mini Next song</string>
+    <string name="contextPrevious">Previous song</string>
+    <string name="contextMiniPrevious">Mii Previous song</string>
+    <string name="contextLoop">Loop mode</string>
+    <string name="contextAleatory">Aleatory mode</string>
+    <string name="contextBaseLine">Baseline</string>
+
+    <string name="contextArtImage">Album art </string>
+    <string name="contextSongName">Song name </string>
 </resources>

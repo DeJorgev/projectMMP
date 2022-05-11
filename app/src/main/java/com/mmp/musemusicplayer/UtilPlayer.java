@@ -1,6 +1,5 @@
 package com.mmp.musemusicplayer;
 
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -40,12 +39,12 @@ public class UtilPlayer {
         player.seekToDefaultPosition(0);
         player.play();
         for (ImageButton ib: buttonPlay) {
-            ib.setImageResource(R.mipmap.pause3x);
+            ib.setImageResource(R.drawable.ic_stop);
         }
     }
 
     //Añade la lista de canciones en orden desde el indice indicado
-    private static void loadMediaItems(int selectedMediaItem, List<com.mmp.musemusicplayer.SongTools.Song> songList){
+    private static void loadMediaItems(int selectedMediaItem, List<Song> songList){
         for(int i = 0;i < songList.size(); ++i){
             int selec = i + selectedMediaItem;
             if(selec < songList.size()){

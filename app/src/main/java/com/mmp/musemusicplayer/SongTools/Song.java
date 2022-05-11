@@ -6,17 +6,19 @@ import android.os.Parcelable;
 
 public class Song  implements Parcelable {
     //Meter aqui los metadatos a sacar 1/4.
-    private long id,albumID;
+    private long id,albumID,artistID;
     private int duration;
-    private String name, albumName;
+    private String name, albumName , artistName;
     private Uri songUri,albumImageUri;
 
-    public Song(long id, long albumID, int duration, String name, String albumName, Uri songUri, Uri albumImageUri) {
+    public Song(long id, long albumID,long artistID, int duration, String name, String albumName, String artist, Uri songUri, Uri albumImageUri ) {
         this.id = id;
         this.albumID = albumID;
+        this.artistID = artistID;
         this.duration = duration;
         this.name = name;
         this.albumName = albumName;
+        this.artistName = artist;
         this.songUri = songUri;
         this.albumImageUri = albumImageUri;
     }
@@ -24,9 +26,12 @@ public class Song  implements Parcelable {
     protected Song(Parcel in) {
         id = in.readLong();
         albumID = in.readLong();
+        artistID = in.readLong();
         duration = in.readInt();
         name = in.readString();
         albumName = in.readString();
+        albumImageUri = Uri.parse(in.readString());
+        artistName = in.readString();
         songUri = Uri.parse(in.readString());
     }
 
@@ -50,6 +55,10 @@ public class Song  implements Parcelable {
         return albumID;
     }
 
+    public long getArtistID() {
+        return artistID;
+    }
+
     public int getDuration() {
         return duration;
     }
@@ -66,6 +75,10 @@ public class Song  implements Parcelable {
         return albumImageUri;
     }
 
+    public String getArtistName() {
+        return artistName;
+    }
+
     public String getAlbumName() {
         return albumName;
     }
@@ -79,9 +92,12 @@ public class Song  implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeLong(id);
         parcel.writeLong(albumID);
+        parcel.writeLong(artistID);
         parcel.writeInt(duration);
         parcel.writeString(name);
         parcel.writeString(albumName);
+        parcel.writeString(albumImageUri.toString());
+        parcel.writeString(artistName);
         parcel.writeString(songUri.toString());
     }
 }

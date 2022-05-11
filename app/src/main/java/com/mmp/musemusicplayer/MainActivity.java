@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         if (!EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             EasyPermissions.requestPermissions(MainActivity.this, "Requesting permission to access storage", 102, Manifest.permission.READ_EXTERNAL_STORAGE);
         }
+
         SongFetcher fetcher = new SongFetcher(MainActivity.this);
         deviceSongs = fetcher.manageSongsFetch();
         deviceAlbums = fetcher.getAlbums();
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         //Reproductor con slide hacia arriba
         ConstraintLayout bottomLayout = findViewById(R.id.bottomSheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomLayout);
-        LinearLayout miniplayer = findViewById(R.id.mini_player);
+        ConstraintLayout miniplayer = findViewById(R.id.mini_player);
         bottomSheetBehavior.addBottomSheetCallback(
                 new BottomSheetBehavior.BottomSheetCallback() {
                     @Override
@@ -172,12 +171,12 @@ public class MainActivity extends AppCompatActivity {
         if (player.isPlaying()) {
             player.pause();
             for (ImageButton ib: playPause) {
-                ib.setImageResource(R.mipmap.play3x);
+                ib.setImageResource(R.drawable.ic_play);
             }
         } else {
             player.play();
             for (ImageButton ib: playPause) {
-                ib.setImageResource(R.mipmap.pause3x);
+                ib.setImageResource(R.drawable.ic_stop);
             }
         }
     }

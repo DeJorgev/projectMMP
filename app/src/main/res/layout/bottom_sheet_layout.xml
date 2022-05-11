@@ -1,25 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical"
     app:behavior_peekHeight="70dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    android:background="@color/grey">
+    app:layout_constraintDimensionRatio="1:1">
+
+
+    <ImageButton
+        android:id="@+id/baselineInversed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="@android:color/transparent"
+        android:contentDescription="@string/contextBaseLine"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:srcCompat="@drawable/baseline"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <ImageView
         android:id="@+id/playing_image"
-        android:layout_width="match_parent"
-        android:layout_height="410dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/contextArtImage"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_default_artimage"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/imagen1"/>
+        app:layout_constraintVertical_bias="0.15" />
 
+    <ImageButton
+        android:id="@+id/inner_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="14dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/contextPlay"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playing_image"
+        app:layout_constraintVertical_bias="0.5"
+        app:tint="@color/white" />
 
-    <LinearLayout
+    <ImageButton
+        android:id="@+id/prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/contextPrevious"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/ic_previous"
+        app:layout_constraintBottom_toBottomOf="@+id/inner_play"
+        app:layout_constraintEnd_toStartOf="@+id/inner_play"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playing_image"
+        app:layout_constraintVertical_bias="1.0"
+        app:tint="@color/white" />
+
+    <ImageButton
+        android:id="@+id/loop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/contextPrevious"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:src="@drawable/ic_default_bucle"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/inner_play"
+        app:layout_constraintEnd_toStartOf="@+id/inner_play"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playing_image"
+        app:layout_constraintVertical_bias="1.0"
+        app:tint="@color/white" />
+
+    <ImageButton
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/contextNext"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="@+id/inner_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toEndOf="@+id/inner_play"
+        app:layout_constraintTop_toBottomOf="@+id/playing_image"
+        app:layout_constraintVertical_bias="1.0"
+        app:tint="@color/white" />
+
+    <ImageButton
+        android:id="@+id/random"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/contextNext"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:src="@drawable/ic_aleatorio"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/inner_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/inner_play"
+        app:layout_constraintTop_toBottomOf="@+id/playing_image"
+        app:layout_constraintVertical_bias="1.0"
+        app:tint="@color/white" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mini_player"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -27,61 +142,121 @@
         android:gravity="center|start"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/titulo"
-            android:layout_width="300dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="Este es mi texto"
+            android:contentDescription="@string/contextSongName"
+            android:text="@string/contextSongName"
             android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <ImageButton
+            android:id="@+id/baseline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="@string/contextBaseLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/baseline"
+            app:tint="@color/white"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/play_pause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="17dp"
-            android:background="@null"
-            android:src="@mipmap/play3x" />
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/contextMiniPlay"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/ic_play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.822"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/mini_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/contextMiniNext"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/ic_next"
+            app:layout_constraintBottom_toBottomOf="@+id/play_pause"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/play_pause"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:tint="@color/white" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center"
-        android:orientation="horizontal"
+        <ImageButton
+            android:id="@+id/mini_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/contextMiniPrevious"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/ic_previous"
+            app:layout_constraintBottom_toBottomOf="@+id/play_pause"
+            app:layout_constraintEnd_toStartOf="@+id/play_pause"
+            app:layout_constraintHorizontal_bias="0.90"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:tint="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/text_songName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/song_name"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playing_image">
+        app:layout_constraintTop_toBottomOf="@+id/playing_image"
+        app:layout_constraintVertical_bias="0.05" />
 
-        <ImageButton
-            android:id="@+id/prev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@mipmap/anterior3x" />
-
-        <ImageButton
-            android:id="@+id/inner_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
-            android:background="@null"
-            android:src="@mipmap/play3x" />
-
-        <ImageButton
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@mipmap/siguiente3x" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/text_songInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/song_info"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_songName"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

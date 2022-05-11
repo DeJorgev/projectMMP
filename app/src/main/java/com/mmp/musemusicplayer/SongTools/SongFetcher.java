@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ import java.util.List;
  *  <li>Borja Abalos</li>
  *  <li>Jorge García.</li>
  * </ul>
- * @version 1.0.0
+ * @version 1.2.0
  */
 
 public class SongFetcher {
@@ -89,6 +87,8 @@ public class SongFetcher {
                 MediaStore.Audio.Media.DURATION,
                 MediaStore.Audio.Media.ALBUM_ID,
                 MediaStore.Audio.Media.ALBUM,
+                MediaStore.Audio.Media.ARTIST_ID,
+                MediaStore.Audio.Media.ARTIST,
         };
 
         return projection;
@@ -115,6 +115,8 @@ public class SongFetcher {
             int durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION);
             int albumIDColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID);
             int albumNameColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM);
+            int artistIDColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST_ID);
+            int artistNameColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST);
 
             //getting the actual values for each column of each file read and applied
             while (cursor.moveToNext()) {
@@ -124,6 +126,8 @@ public class SongFetcher {
                 int duration = cursor.getInt(durationColumn);
                 long albumID = cursor.getLong(albumIDColumn);
                 String albumName = cursor.getString(albumNameColumn);
+                long artistID = cursor.getLong(artistIDColumn);
+                String artistName = cursor.getString(artistNameColumn);
 
                 Uri songuri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
                 Uri albumImageUri = ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), albumID);
@@ -132,7 +136,7 @@ public class SongFetcher {
                 name = name.substring(0, name.lastIndexOf("."));
 
                 //Creating and adding song Item to List
-                Song song = new Song(id, albumID, duration, name, albumName, songuri, albumImageUri);
+                Song song = new Song(id, albumID,artistID, duration, name, albumName,artistName , songuri, albumImageUri);
                 addAlbum(song);
                 songsList.add(song);
             }

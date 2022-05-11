@@ -1,9 +1,13 @@
 package com.mmp.musemusicplayer.SongTools;
 
 import android.content.Context;
-import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+
+import com.mmp.musemusicplayer.SongTools.CustomAdapters.CustomSongAdapter;
 
 import java.util.List;
 
@@ -22,6 +26,7 @@ public class ListDisplayer {
      */
 
     private Context actualClass;
+    List<Song> songsToDisplay;
 
     /**
      * Usual constructor
@@ -31,11 +36,12 @@ public class ListDisplayer {
      */
     public ListDisplayer(Context actualClass) {
         this.actualClass = actualClass;
+
     }
 
     /**
      * Displays in a List View the name of the songs saved in a provided List, each one on a separate list view item.
-     * uses (For the moment) a default adapter.
+     * uses a custom adapter.
      *
      * @param songListView The List View where the songs are going to be displayed. Has to exist in the layout and be initialized in the view and code.
      * @param songsToDisplay the List of song item to display
@@ -46,8 +52,8 @@ public class ListDisplayer {
         for (int i = 0; i < songNames.length; i++)
             songNames[i] = songsToDisplay.get(i).getName();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(actualClass, android.R.layout.simple_list_item_1,songNames);
-        songListView.setAdapter(arrayAdapter);
+        CustomSongAdapter customSongAdapter = new CustomSongAdapter(songsToDisplay, actualClass);
+        songListView.setAdapter(customSongAdapter);
     }
 
     //Displays the arrayList of songs on a list view item using (For the moment) a default adapter.
@@ -59,5 +65,28 @@ public class ListDisplayer {
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(actualClass, android.R.layout.simple_list_item_1,albumNames);
         albumListView.setAdapter(arrayAdapter);
+    }
+
+    class CustomAdapter extends BaseAdapter{
+
+        @Override
+        public int getCount() {
+            return songsToDisplay.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            return null;
+        }
     }
 }
