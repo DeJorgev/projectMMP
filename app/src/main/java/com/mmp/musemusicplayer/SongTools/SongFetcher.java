@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -52,10 +53,8 @@ public class SongFetcher {
 
         //Executes the Query and saves the selected song´s data in a List
         List<Song> songsList = fetchSongs(songFolderUri, projection, sortOrder);
-
-        Toast debug = Toast.makeText(actualClass, "Number of Songs: " + songsList.size(), Toast.LENGTH_SHORT);
-        debug.show();
-
+        if(songsList != null)
+            Log.e("Hasta aqui",songsList.size()+"");
         return songsList;
     }
 
@@ -154,7 +153,7 @@ public class SongFetcher {
         if (index != -1)
             albums.get(index).getSongs().add(song);
         else
-            albums.add(new Album(song.getAlbumID(), song.getAlbumName(), song));
+            albums.add(new Album(song.getAlbumID(), song.getAlbumName(), song, song.getArtistName()));
     }
 
     public List<Album> getAlbums() {

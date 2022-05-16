@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mmp.musemusicplayer.R;
 import com.mmp.musemusicplayer.SongTools.Song;
 
@@ -21,9 +22,11 @@ import java.util.List;
 public class CustomSongAdapter extends BaseAdapter {
     List<Song> songs;
     LayoutInflater inflater;
+    Context context;
 
     public CustomSongAdapter(List songs, Context context) {
         this.songs = songs;
+        this.context = context;
         Activity activity = (Activity) context;
         this.inflater = activity.getLayoutInflater();
     }
@@ -63,13 +66,21 @@ public class CustomSongAdapter extends BaseAdapter {
         TextView textSongInfo = myView.findViewById(R.id.iteminfoname);
         textSongInfo.setText(songs.get(i).getAlbumName() + " - " + songs.get(i).getArtistName());
 
+        ImageView albumArt = myView.findViewById(R.id.itemalbumart);
+        if (songs.get(i).getAlbumImageUri()!=null) {
+            Glide.with(context)
+                    .load(songs.get(i).getAlbumImageUri())
+                    .placeholder(R.drawable.ic_default_artimage)
+                    .into(albumArt);
+        }
+        /*
         if (songs.get(i).getAlbumImageUri()!=null) {
             ImageView albumArt = myView.findViewById(R.id.itemalbumart);
             albumArt.setImageURI(songs.get(i).getAlbumImageUri());
 
             if (albumArt.getDrawable() == null)
                 albumArt.setImageResource(R.drawable.ic_default_artimage);
-        }
+        }*/
         return myView;
     }
 

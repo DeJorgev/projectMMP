@@ -61,5 +61,17 @@ public class AllSongsFragment extends Fragment {
                 UtilPlayer.startPlayingList(i, deviceSongs);
             }
         });
+
+        player.addListener(new Player.Listener() {
+            @Override
+            public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
+                Player.Listener.super.onMediaItemTransition(mediaItem, reason);
+                if(mediaItem != null) {
+                    UtilPlayer.updatePlayerMetadata(Integer.parseInt(mediaItem.mediaId));
+                    listview.setItemChecked(Integer.parseInt(mediaItem.mediaId), true);
+                }
+            }
+
+        });
     }
 }

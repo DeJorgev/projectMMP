@@ -11,10 +11,12 @@ public class Album implements Parcelable {
     private long albumId;
     private String albumName;
     private List<Song> songs;
+    private String artistName;
 
-    public Album(long album_id, String albumName, Song song) {
+    public Album(long album_id, String albumName, Song song, String artistName) {
         this.albumId = album_id;
         this.albumName = albumName;
+        this.artistName = artistName;
         songs = new ArrayList<>();
         songs.add(song);
     }
@@ -37,6 +39,10 @@ public class Album implements Parcelable {
             return new Album[size];
         }
     };
+
+    public String getArtistName() {
+        return artistName;
+    }
 
     public long getAlbumID() {
         return albumId;

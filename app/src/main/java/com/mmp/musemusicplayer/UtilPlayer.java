@@ -1,5 +1,6 @@
 package com.mmp.musemusicplayer;
 
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -13,13 +14,15 @@ public class UtilPlayer {
 
     private static ExoPlayer player;
     private static ImageButton buttonPlay[];
-    private static TextView songTitleTv;
+    private static TextView[] songTitlesTv;
+    private static TextView songInfo;
     private static List<Song> playingList;
 
-    public UtilPlayer(ExoPlayer iPlayer, ImageButton[] iButtonPlay, TextView iSongTitleTv){
+    public UtilPlayer(ExoPlayer iPlayer, ImageButton[] iButtonPlay, TextView[] iSongTitlesTv, TextView iSongInfo){
         player = iPlayer;
         buttonPlay = iButtonPlay;
-        songTitleTv = iSongTitleTv;
+        songTitlesTv = iSongTitlesTv;
+        songInfo = iSongInfo;
     }
 
     public static ExoPlayer getPlayer(){
@@ -34,7 +37,7 @@ public class UtilPlayer {
         if(player.isPlaying()){
             player.clearMediaItems();
         }
-        loadMediaItems(index, songList);
+        loadMediaItems(index, playingList);
         player.prepare();
         player.seekToDefaultPosition(0);
         player.play();
@@ -47,17 +50,20 @@ public class UtilPlayer {
     private static void loadMediaItems(int selectedMediaItem, List<Song> songList){
         for(int i = 0;i < songList.size(); ++i){
             int selec = i + selectedMediaItem;
+            MediaItem item;
             if(selec < songList.size()){
-                MediaItem item = MediaItem.fromUri(songList.get(selec).getSongUri());
-                player.addMediaItem(MediaItem.fromUri(songList.get(selec).getSongUri()));
+                item = new MediaItem.Builder().setUri(songList.get(selec).getSongUri()).setMediaId(String.valueOf(selec)).build();
             }else{
-                player.addMediaItem(MediaItem.fromUri(songList.get(i-selectedMediaItem).getSongUri()));
+                item = new MediaItem.Builder().setUri(songList.get(selec-songList.size()).getSongUri()).setMediaId(String.valueOf(selec-songList.size())).build();
             }
+            player.addMediaItem(item);
         }
     }
 
     public static void updatePlayerMetadata(int index){
         Song song = playingList.get(index);
-        songTitleTv.setText(song.getName());
+        for(TextView songTitle : songTitlesTv)
+            songTitle.setText(song.getName());
+        songInfo.setText(song.getArtistName());
     }
 }

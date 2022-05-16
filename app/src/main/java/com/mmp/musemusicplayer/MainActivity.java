@@ -1,7 +1,9 @@
 package com.mmp.musemusicplayer;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -16,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.MediaMetadata;
 import com.google.android.exoplayer2.Player;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.mmp.musemusicplayer.Fragments.TabsFragment;
@@ -24,6 +27,7 @@ import com.mmp.musemusicplayer.SongTools.Song;
 import com.mmp.musemusicplayer.SongTools.SongFetcher;
 import com.mmp.musemusicplayer.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pub.devrel.easypermissions.EasyPermissions;
@@ -33,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private Button next;
     private Button prev;
-    private TextView titulo;
+    private TextView[] titulos;
     private BottomSheetBehavior bottomSheetBehavior;
 
     private static List<Song> deviceSongs;
@@ -61,28 +65,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.e("Main activity","1");
         super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        Log.e("Main activity","2");
+
         if (!EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             EasyPermissions.requestPermissions(MainActivity.this, "Requesting permission to access storage", 102, Manifest.permission.READ_EXTERNAL_STORAGE);
         }
-
         SongFetcher fetcher = new SongFetcher(MainActivity.this);
         deviceSongs = fetcher.manageSongsFetch();
         deviceAlbums = fetcher.getAlbums();
-        player = new ExoPlayer.Builder(MainActivity.this).build();
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
-        //Evento para el cambio de cancion
-        titulo = findViewById(R.id.titulo);
-        player.addListener(new Player.Listener() {
-            @Override
-            public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
-                Player.Listener.super.onMediaItemTransition(mediaItem, reason);
-                UtilPlayer.updatePlayerMetadata(player.getCurrentMediaItemIndex());
-            }
+        player = new ExoPlayer.Builder(this).build();
 
-        });
+        titulos = new TextView[]{findViewById(R.id.titulo), findViewById(R.id.text_songName)};
 
         FragmentTransaction ft =  getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_placeholder, new TabsFragment());
@@ -125,39 +123,50 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Boton play/pause
-        ImageButton[] playPause = new ImageButton[2];
-        playPause[0]= findViewById(R.id.play_pause);
-        playPause[1] = findViewById(R.id.inner_play);
-        new UtilPlayer(player, playPause, titulo);
-        playPause[0].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                changePlayPauseState(player, playPause);
-            }
-        });
-
-        playPause[1].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                changePlayPauseState(player, playPause);
-            }
-        });
+        ImageButton[] playPause = new ImageButton[]{findViewById(R.id.play_pause), findViewById(R.id.inner_play)};
+        new UtilPlayer(player, playPause, titulos, findViewById(R.id.text_songInfo));
+        for(ImageButton imgBtn : playPause){
+            imgBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    changePlayPauseState(player, playPause);
+                }
+            });
+        }
 
         //Boton siguiente
-        ImageButton next = findViewById(R.id.next);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UtilPlayer.getPlayer().seekToNextMediaItem();
-            }
-        });
+        ImageButton[] nexts = new ImageButton[]{findViewById(R.id.next),findViewById(R.id.mini_next)};
+        for(ImageButton imgBtn : nexts){
+            imgBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UtilPlayer.getPlayer().seekToNext();
+                }
+            });
+        }
 
         //Boton anterior
-        ImageButton prev = findViewById(R.id.prev);
-        prev.setOnClickListener(new View.OnClickListener() {
+        ImageButton[] prevs = new ImageButton[]{findViewById(R.id.prev),findViewById(R.id.mini_previous)};
+        for(ImageButton imgBtn : prevs){
+            imgBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UtilPlayer.getPlayer().seekToPrevious();
+                }
+            });
+        }
+
+        ImageButton random = findViewById(R.id.random);
+        random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                player.seekToPreviousMediaItem();
+                if(player.getShuffleModeEnabled()){
+                    player.setShuffleModeEnabled(false);
+                    random.setAlpha(0.5f);
+                }else{
+                    player.setShuffleModeEnabled(true);
+                    random.setAlpha(1f);
+                }
             }
         });
 
@@ -180,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     //Various
     //Overrides using EasyPermissions library for a simpler code. By Google
     @Override
