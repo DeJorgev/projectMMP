@@ -71,7 +71,12 @@ public class AdapterSongRV extends RecyclerView.Adapter <AdapterSongRV.ViewHolde
 
                     UtilPlayer.updatePlayerMetadata(Integer.parseInt(mediaItem.mediaId));
 
-                    rv.findViewHolderForAdapterPosition(Integer.parseInt(mediaItem.mediaId)).itemView.setSelected(true);
+                    rv.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            rv.findViewHolderForAdapterPosition(Integer.parseInt(mediaItem.mediaId)).itemView.setSelected(true);
+                        }
+                    });
 
                     oldmedia = Integer.parseInt(mediaItem.mediaId);
                 }
