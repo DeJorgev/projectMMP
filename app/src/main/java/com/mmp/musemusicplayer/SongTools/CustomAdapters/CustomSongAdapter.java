@@ -50,6 +50,8 @@ public class CustomSongAdapter extends BaseAdapter {
         return position;
     }
 
+
+
      /**
       * Loads the data from the item songns into the view.
       * needs optimization.
@@ -58,15 +60,15 @@ public class CustomSongAdapter extends BaseAdapter {
       */
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View myView = inflater.inflate(R.layout.itemlist_item, null);
+        View myView = inflater.inflate(R.layout.song_list_item, null);
 
-        TextView textSongName = myView.findViewById(R.id.itemsongname);
+        TextView textSongName = myView.findViewById(R.id.item_song_name);
         textSongName.setText(songs.get(i).getName());
 
-        TextView textSongInfo = myView.findViewById(R.id.iteminfoname);
+        TextView textSongInfo = myView.findViewById(R.id.item_info_name);
         textSongInfo.setText(songs.get(i).getAlbumName() + " - " + songs.get(i).getArtistName());
 
-        ImageView albumArt = myView.findViewById(R.id.itemalbumart);
+        ImageView albumArt = myView.findViewById(R.id.item_album_art);
         if (songs.get(i).getAlbumImageUri()!=null) {
             Glide.with(context)
                     .load(songs.get(i).getAlbumImageUri())
