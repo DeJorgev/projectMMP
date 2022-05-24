@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import com.mmp.musemusicplayer.MainActivity;
 
 import com.mmp.musemusicplayer.SongTools.CustomAdapters.AdapterSongRV;
-import com.mmp.musemusicplayer.UtilPlayer;
 import com.mmp.musemusicplayer.R;
 import com.mmp.musemusicplayer.SongTools.Song;
 import com.google.android.exoplayer2.*;
@@ -26,8 +25,6 @@ public class AllSongsFragment extends Fragment{
 
     private static List<Song> deviceSongs = MainActivity.getDeviceSongs();
     private RecyclerView songRV;
-    private ExoPlayer player = MainActivity.getExoPlayer();
-    private boolean playing = MainActivity.isPlaying();
 
     public static AllSongsFragment newInstance() {
         AllSongsFragment fragment = new AllSongsFragment();
@@ -55,39 +52,8 @@ public class AllSongsFragment extends Fragment{
         songRV = view.findViewById(R.id.song_recycler_view);
         songRV.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        AdapterSongRV adapter = new AdapterSongRV(deviceSongs, this);
+        AdapterSongRV adapter = new AdapterSongRV(deviceSongs, this, songRV);
         songRV.setAdapter(adapter);
-
-        player.addListener(new Player.Listener() {
-            int oldmedia = -1;
-
-
-            @Override
-            public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
-                Player.Listener.super.onMediaItemTransition(mediaItem, reason);
-
-                if (mediaItem != null) {
-                    if (oldmedia < Integer.parseInt(mediaItem.mediaId))
-                        songRV.scrollToPosition(Integer.parseInt(mediaItem.mediaId) + 3);
-                    else
-                        songRV.scrollToPosition(Integer.parseInt(mediaItem.mediaId) - 3);
-
-                    if (oldmedia != -1 && songRV.findViewHolderForAdapterPosition(oldmedia) != null)
-                        songRV.findViewHolderForAdapterPosition(oldmedia).itemView.setSelected(false);
-
-                    UtilPlayer.updatePlayerMetadata(Integer.parseInt(mediaItem.mediaId));
-
-                    songRV.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            songRV.findViewHolderForAdapterPosition(Integer.parseInt(mediaItem.mediaId)).itemView.setSelected(true);
-                        }
-                    });
-                    oldmedia = Integer.parseInt(mediaItem.mediaId);
-                }
-            }
-        });
-
 
     }
 }
