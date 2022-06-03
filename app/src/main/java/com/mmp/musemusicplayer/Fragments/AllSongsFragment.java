@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.android.exoplayer2.util.Log;
 import com.mmp.musemusicplayer.MainActivity;
 import com.mmp.musemusicplayer.UtilPlayer;
 import com.mmp.musemusicplayer.R;
@@ -62,12 +63,11 @@ public class AllSongsFragment extends Fragment {
             }
         });
 
-        player.addListener(new Player.Listener() {
+        UtilPlayer.getPlayer().addListener(new Player.Listener() {
             @Override
             public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
                 Player.Listener.super.onMediaItemTransition(mediaItem, reason);
                 if(mediaItem != null) {
-                    UtilPlayer.updatePlayerMetadata(Integer.parseInt(mediaItem.mediaId));
                     listview.setItemChecked(Integer.parseInt(mediaItem.mediaId), true);
                 }
             }

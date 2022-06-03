@@ -30,6 +30,7 @@ public class CustomSongAdapter extends BaseAdapter {
         Activity activity = (Activity) context;
         this.inflater = activity.getLayoutInflater();
     }
+
     @Override
     public int getCount() {
         return songs.size();

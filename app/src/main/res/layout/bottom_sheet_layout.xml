@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    app:behavior_peekHeight="70dp"
+    app:behavior_peekHeight="75dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     app:layout_constraintDimensionRatio="1:1">
 
@@ -138,7 +138,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mini_player"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="75dp"
         android:background="@color/black"
         android:gravity="center|start"
         android:orientation="horizontal"
@@ -235,6 +235,7 @@
         android:id="@+id/text_songName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text="@string/song_name"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -258,6 +259,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_songName"
         app:layout_constraintVertical_bias="0.0" />
+
+
+    <SeekBar
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:id="@+id/seekBar"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_songInfo"
+        app:layout_constraintBottom_toTopOf="@+id/inner_play"
+        android:secondaryProgressTint="@color/white"
+        android:progressBackgroundTint="@color/white"/>
+
+    <TextView
+        android:id="@+id/songCurrentSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="0.00"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/inner_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/songTotalDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="0:00"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/inner_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.856"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

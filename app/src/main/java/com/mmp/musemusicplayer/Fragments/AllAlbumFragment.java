@@ -20,6 +20,7 @@ import com.mmp.musemusicplayer.SongTools.Album;
 import com.mmp.musemusicplayer.SongTools.CustomAdapters.AdapterAlbumRV;
 import com.mmp.musemusicplayer.SongTools.ListDisplayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AllAlbumFragment extends Fragment {
@@ -34,6 +35,21 @@ public class AllAlbumFragment extends Fragment {
 
     public static AllAlbumFragment newInstance() {
         AllAlbumFragment fragment = new AllAlbumFragment();
+        Bundle args = new Bundle();
+        ArrayList<Album> listAlbums = new ArrayList<>();
+        listAlbums.addAll(deviceAlbums);
+        args.putParcelableArrayList("albums", listAlbums);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static AllAlbumFragment newInstance(List<Album> albums) {
+        AllAlbumFragment fragment = new AllAlbumFragment();
+        Bundle args = new Bundle();
+        ArrayList<Album> listAlbums = new ArrayList<>();
+        listAlbums.addAll(albums);
+        args.putParcelableArrayList("albums", listAlbums);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -65,7 +81,10 @@ public class AllAlbumFragment extends Fragment {
         recycler = view.findViewById(R.id.album_rv);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        AdapterAlbumRV adapter = new AdapterAlbumRV(deviceAlbums, this);
+        Bundle args = getArguments();
+        List<Album> albums = args.getParcelableArrayList("albums");
+
+        AdapterAlbumRV adapter = new AdapterAlbumRV(albums, this);
         recycler.setAdapter(adapter);
 
         return view;

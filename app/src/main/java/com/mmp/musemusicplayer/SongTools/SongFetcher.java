@@ -27,6 +27,7 @@ import java.util.List;
 public class SongFetcher {
     private Context actualClass;
     private List<Album> albums = new ArrayList<>();
+    private List<Artist> artists = new ArrayList<>();
 
     /**
      * Usual constructor.
@@ -136,27 +137,55 @@ public class SongFetcher {
 
                 //Creating and adding song Item to List
                 Song song = new Song(id, albumID,artistID, duration, name, albumName,artistName , songuri, albumImageUri);
-                addAlbum(song);
+                Album album = addAlbum(song);
+                addArtist(album);
                 songsList.add(song);
+
             }
         }
         return songsList;
     }
 
     //Provisional
-    private void addAlbum(Song song) {
+    private Album addAlbum(Song song) {
         int index = -1;
         for (int i = 0; i < albums.size() && index == -1; ++i) {
             if (albums.get(i).getAlbumID() == song.getAlbumID())
                 index = i;
         }
-        if (index != -1)
+        Album album;
+        if (index != -1) {
             albums.get(index).getSongs().add(song);
-        else
-            albums.add(new Album(song.getAlbumID(), song.getAlbumName(), song, song.getArtistName()));
+            album = albums.get(index);
+
+        }else {
+            album = new Album(song.getAlbumID(), song.getAlbumName(), song, song.getArtistName());
+            albums.add(album);
+        }
+        return album;
+    }
+
+    private void addArtist(Album album){
+        int index = -1;
+        for (int i = 0; i < artists.size() && index == -1; ++i){
+            if(artists.get(i).getArtistName().equals(album.getArtistName()))
+                index = i;
+        }
+        if(index != -1) {
+            if (!artists.get(index).getAlbumList().contains(album)) {
+                artists.get(index).addAlbum(album);
+            }
+        }
+        else {
+            artists.add(new Artist(album));
+        }
     }
 
     public List<Album> getAlbums() {
         return albums;
+    }
+
+    public List<Artist> getArtists() {
+        return artists;
     }
 }

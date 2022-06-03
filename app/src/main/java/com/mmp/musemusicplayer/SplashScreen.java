@@ -34,18 +34,23 @@ public class SplashScreen extends AppCompatActivity {
         if (!EasyPermissions.hasPermissions(SplashScreen.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             EasyPermissions.requestPermissions(SplashScreen.this, "Requesting permission to access storage", 102, Manifest.permission.READ_EXTERNAL_STORAGE);
         }
-        Log.e("Hasta aqui","-");
-        if (EasyPermissions.hasPermissions(SplashScreen.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            SongFetcher fetcher = new SongFetcher(SplashScreen.this);
-            deviceSongs.addAll(fetcher.manageSongsFetch());
-            deviceAlbums.addAll(fetcher.getAlbums());
-            Log.e("Hasta aqui","-");
-            Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-            intent.putParcelableArrayListExtra("songs",  deviceSongs);
-            intent.putParcelableArrayListExtra("albums", deviceAlbums);
-            Log.e("Hasta aqui","-");
-            startActivity(intent);
-        }
+
+        TimerTask tTask = new TimerTask() {
+            @Override
+            public void run() {
+                if (EasyPermissions.hasPermissions(SplashScreen.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    SongFetcher fetcher = new SongFetcher(SplashScreen.this);
+                    deviceSongs.addAll(fetcher.manageSongsFetch());
+                    deviceAlbums.addAll(fetcher.getAlbums());
+                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                    intent.putParcelableArrayListExtra("songs",  deviceSongs);
+                    intent.putParcelableArrayListExtra("albums", deviceAlbums);
+                    startActivity(intent);
+                }
+            }
+        };
+
+
     }
 
 }

@@ -1,12 +1,13 @@
 package com.mmp.musemusicplayer;
 
 import android.Manifest;
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,16 +19,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
-import com.google.android.exoplayer2.MediaMetadata;
 import com.google.android.exoplayer2.Player;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.mmp.musemusicplayer.Fragments.TabsFragment;
 import com.mmp.musemusicplayer.SongTools.Album;
+import com.mmp.musemusicplayer.SongTools.Artist;
 import com.mmp.musemusicplayer.SongTools.Song;
 import com.mmp.musemusicplayer.SongTools.SongFetcher;
 import com.mmp.musemusicplayer.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pub.devrel.easypermissions.EasyPermissions;
@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
     private Button prev;
     private TextView[] titulos;
     private BottomSheetBehavior bottomSheetBehavior;
+    private SeekBar seekBar;
+    private TextView songDuration;
+    private TextView currentSecond;
+    private ImageButton baseLine;
+    private ImageButton baseLineInversed;
+    Handler handler = new Handler();
 
     private static List<Song> deviceSongs;
     public static List<Song> getDeviceSongs() {
@@ -58,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         return deviceAlbums;
     }
 
+    private static List<Artist> deviceArtists;
+    public static List<Artist> getDeviceArtist() {
+        return deviceArtists;
+    }
+
     private static ExoPlayer player;
     public static ExoPlayer getExoPlayer() {
         return player;
@@ -65,11 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.e("Main activity","1");
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Log.e("Main activity","2");
 
         if (!EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             EasyPermissions.requestPermissions(MainActivity.this, "Requesting permission to access storage", 102, Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -77,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         SongFetcher fetcher = new SongFetcher(MainActivity.this);
         deviceSongs = fetcher.manageSongsFetch();
         deviceAlbums = fetcher.getAlbums();
+        deviceArtists = fetcher.getArtists();
 
         player = new ExoPlayer.Builder(this).build();
 
@@ -115,10 +125,26 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        miniplayer.setOnClickListener(new View.OnClickListener() {
+        bottomLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        baseLine = findViewById(R.id.baseline);
+        baseLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bottomSheetBehavior.setState(bottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
+
+        baseLineInversed = findViewById(R.id.baselineInversed);
+        baseLineInversed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
             }
         });
 
@@ -170,6 +196,60 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        seekBar = findViewById(R.id.seekBar);
+        songDuration = findViewById(R.id.songTotalDuration);
+        currentSecond = findViewById(R.id.songCurrentSecond);
+        UtilPlayer.getPlayer().addListener(new Player.Listener() {
+            @Override
+            public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
+                Player.Listener.super.onMediaItemTransition(mediaItem, reason);
+                if(mediaItem != null) {
+                    UtilPlayer.updatePlayerMetadata(Integer.parseInt(mediaItem.mediaId));
+                    songDuration.setText(UtilPlayer.getReadableTime((int) UtilPlayer.getDuration(Integer.parseInt(mediaItem.mediaId))));
+                    seekBar.setMax((int) UtilPlayer.getDuration(Integer.parseInt(mediaItem.mediaId)));
+                }
+            }
+
+            @Override
+            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                Player.Listener.super.onPlayerStateChanged(playWhenReady, playbackState);
+                if(player.isPlaying()){
+                    UpdateSeekBar upsk = new UpdateSeekBar();
+                    handler.post(upsk);
+                }
+            }
+        });
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                if(b){
+                    UtilPlayer.getPlayer().seekTo((long)i);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+    }
+
+    public class UpdateSeekBar implements Runnable{
+
+        @Override
+        public void run() {
+            seekBar.setProgress((int) player.getCurrentPosition());
+            currentSecond.setText(UtilPlayer.getReadableTime((int)player.getCurrentPosition()));
+            handler.postDelayed(this, 100);
+        }
     }
 
     public void showtoast(String message) {
