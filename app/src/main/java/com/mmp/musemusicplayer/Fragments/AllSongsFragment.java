@@ -12,11 +12,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.google.android.exoplayer2.util.Log;
 import com.mmp.musemusicplayer.MainActivity;
 import com.mmp.musemusicplayer.UtilPlayer;
 import com.mmp.musemusicplayer.R;
-import com.mmp.musemusicplayer.SongTools.Song;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 import com.mmp.musemusicplayer.SongTools.ListDisplayer;
 import com.google.android.exoplayer2.*;
 
@@ -68,10 +67,11 @@ public class AllSongsFragment extends Fragment {
             public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
                 Player.Listener.super.onMediaItemTransition(mediaItem, reason);
                 if(mediaItem != null) {
-                    listview.setItemChecked(Integer.parseInt(mediaItem.mediaId), true);
+                    int newMediaID = Integer.parseInt((mediaItem.mediaId));
+                    listview.smoothScrollToPosition(newMediaID);
+                    listview.setItemChecked(newMediaID, true);
                 }
             }
-
         });
     }
 }

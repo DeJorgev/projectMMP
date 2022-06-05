@@ -1,4 +1,4 @@
-package com.mmp.musemusicplayer.SongTools;
+package com.mmp.musemusicplayer.SongTools.DataContainers;
 
 import java.util.ArrayList;
 import java.util.List;

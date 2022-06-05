@@ -11,10 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.mmp.musemusicplayer.Fragments.AlbumDetail;
 import com.mmp.musemusicplayer.R;
-import com.mmp.musemusicplayer.SongTools.Album;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
 
 import java.util.List;
 

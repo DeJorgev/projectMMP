@@ -11,13 +11,16 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mmp.musemusicplayer.R;
-import com.mmp.musemusicplayer.SongTools.Song;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 
 import java.util.List;
 
  /**
   *  An adapter that loads a customized item view to use to display the songs in a list views.
   *  Needs a List and an inflater.
+  *
+  * @author Borja Avalos, Jorge García
+  * @version 1.1.0
  **/
 public class CustomSongAdapter extends BaseAdapter {
     List<Song> songs;
@@ -52,8 +55,8 @@ public class CustomSongAdapter extends BaseAdapter {
     }
 
      /**
-      * Loads the data from the item songns into the view.
-      * needs optimization.
+      * Loads the data from the item songs into the view.
+      * Uses Glide to minimize resources consumption while loading items.
       * @param i The current item at the List.
       * @return A custom view.
       */
@@ -74,14 +77,6 @@ public class CustomSongAdapter extends BaseAdapter {
                     .placeholder(R.drawable.ic_default_artimage)
                     .into(albumArt);
         }
-        /*
-        if (songs.get(i).getAlbumImageUri()!=null) {
-            ImageView albumArt = myView.findViewById(R.id.itemalbumart);
-            albumArt.setImageURI(songs.get(i).getAlbumImageUri());
-
-            if (albumArt.getDrawable() == null)
-                albumArt.setImageResource(R.drawable.ic_default_artimage);
-        }*/
         return myView;
     }
 

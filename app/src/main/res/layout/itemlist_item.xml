@@ -25,11 +25,12 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:background="@color/light_black"
+            android:contentDescription="@string/contextArtImage"
             android:cropToPadding="true"
             android:drawingCacheQuality="high"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_default_artimage"
-            app:layout_constraintDimensionRatio="1:1"/>
+            app:layout_constraintDimensionRatio="1:1" />
 
         <TextView
             android:id="@+id/itemsongname"
@@ -65,7 +66,7 @@
             android:padding="6dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="Album - artist"
+            android:text="@string/song_info"
             android:textColor="@color/white"
             android:textSize="12sp">
 

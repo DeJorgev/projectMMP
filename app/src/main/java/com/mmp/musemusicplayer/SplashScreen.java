@@ -1,21 +1,16 @@
 package com.mmp.musemusicplayer;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 
-import com.mmp.musemusicplayer.SongTools.Album;
-import com.mmp.musemusicplayer.SongTools.Song;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 import com.mmp.musemusicplayer.SongTools.SongFetcher;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
 import java.util.TimerTask;
 
 import pub.devrel.easypermissions.EasyPermissions;

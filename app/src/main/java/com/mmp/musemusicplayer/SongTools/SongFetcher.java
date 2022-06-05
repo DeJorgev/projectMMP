@@ -7,7 +7,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Artist;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 
 import java.util.ArrayList;
 import java.util.List;

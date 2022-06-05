@@ -11,14 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.mmp.musemusicplayer.MainActivity;
 import com.mmp.musemusicplayer.R;
-import com.mmp.musemusicplayer.SongTools.Album;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
 import com.mmp.musemusicplayer.SongTools.CustomAdapters.AdapterAlbumRV;
-import com.mmp.musemusicplayer.SongTools.ListDisplayer;
 
 import java.util.ArrayList;
 import java.util.List;

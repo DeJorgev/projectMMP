@@ -1,4 +1,4 @@
-package com.mmp.musemusicplayer.SongTools;
+package com.mmp.musemusicplayer.SongTools.DataContainers;
 
 import android.os.Parcel;
 import android.os.Parcelable;

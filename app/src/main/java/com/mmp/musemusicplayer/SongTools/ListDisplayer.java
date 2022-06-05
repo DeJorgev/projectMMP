@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.mmp.musemusicplayer.SongTools.CustomAdapters.CustomSongAdapter;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 
 import java.util.List;
 

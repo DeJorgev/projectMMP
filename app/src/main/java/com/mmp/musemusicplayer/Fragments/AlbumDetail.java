@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
 import com.mmp.musemusicplayer.R;
-import com.mmp.musemusicplayer.SongTools.Album;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
 import com.mmp.musemusicplayer.SongTools.ListDisplayer;
 import com.mmp.musemusicplayer.UtilPlayer;
 
@@ -83,8 +83,11 @@ public class AlbumDetail extends Fragment {
             public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
                 Player.Listener.super.onMediaItemTransition(mediaItem, reason);
                 if(mediaItem != null) {
-                    UtilPlayer.updatePlayerMetadata(Integer.parseInt(mediaItem.mediaId));
-                    albumSongsLV.setItemChecked(Integer.parseInt(mediaItem.mediaId), true);
+                    int newMediaID = Integer.parseInt(mediaItem.mediaId);
+
+                    albumSongsLV.smoothScrollToPosition(newMediaID);
+                    UtilPlayer.updatePlayerMetadata(newMediaID);
+                    albumSongsLV.setItemChecked(newMediaID, true);
                 }
             }
 

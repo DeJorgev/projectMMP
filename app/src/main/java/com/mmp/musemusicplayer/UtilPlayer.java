@@ -1,15 +1,20 @@
 package com.mmp.musemusicplayer;
 
-import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
-import com.mmp.musemusicplayer.SongTools.Song;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 
 import java.util.List;
+
+/**
+ * Diferent utilities to solve problems with exoplayer and machine reads
+ *
+ * @author Borja Avalos, Jorge Garcia
+ * @version 1.0.0
+ */
 
 public class UtilPlayer {
 
@@ -65,6 +70,13 @@ public class UtilPlayer {
             songTitle.setText(song.getName());
         songInfo.setText(song.getArtistName());
     }
+
+    /**
+     * Transforms a computer time in miliseconds to a hour:min:sec time.
+     *
+     * @param duration time in miliseconds to convert
+     * @return a hour:min:sec time.
+     */
 
     static public String getReadableTime(int duration) {
         String time;

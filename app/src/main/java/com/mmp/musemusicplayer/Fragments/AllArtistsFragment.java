@@ -12,8 +12,7 @@ import android.view.ViewGroup;
 
 import com.mmp.musemusicplayer.MainActivity;
 import com.mmp.musemusicplayer.R;
-import com.mmp.musemusicplayer.SongTools.Artist;
-import com.mmp.musemusicplayer.SongTools.CustomAdapters.AdapterAlbumRV;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Artist;
 import com.mmp.musemusicplayer.SongTools.CustomAdapters.AdapterArtistsRV;
 
 import java.util.List;

@@ -19,6 +19,7 @@ import com.mmp.musemusicplayer.R;
  * one of the sections/tabs/pages.
  *
  * Basically this class manages the fragment selection.
+ * @author Jorge García
  */
 public class TabsFragment extends Fragment {
 
@@ -38,12 +39,6 @@ public class TabsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        */
     }
 
     @Override

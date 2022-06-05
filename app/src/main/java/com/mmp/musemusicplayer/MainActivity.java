@@ -3,7 +3,6 @@ package com.mmp.musemusicplayer;
 import android.Manifest;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -22,9 +21,9 @@ import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.mmp.musemusicplayer.Fragments.TabsFragment;
-import com.mmp.musemusicplayer.SongTools.Album;
-import com.mmp.musemusicplayer.SongTools.Artist;
-import com.mmp.musemusicplayer.SongTools.Song;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Artist;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 import com.mmp.musemusicplayer.SongTools.SongFetcher;
 import com.mmp.musemusicplayer.databinding.ActivityMainBinding;
 
@@ -182,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        //Boton random
         ImageButton random = findViewById(R.id.random);
         random.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,6 +192,29 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     player.setShuffleModeEnabled(true);
                     random.setAlpha(1f);
+                }
+            }
+        });
+
+        //Boton loop
+        ImageButton loopMode = findViewById(R.id.loop);
+        loopMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (player.getRepeatMode()){
+                    case ExoPlayer.REPEAT_MODE_OFF:
+                        player.setRepeatMode(ExoPlayer.REPEAT_MODE_ONE);
+                        loopMode.setAlpha(1f);
+                        loopMode.setImageResource(R.drawable.ic_bucle_one);
+                        break;
+                    case ExoPlayer.REPEAT_MODE_ONE:
+                        player.setRepeatMode(ExoPlayer.REPEAT_MODE_ALL);
+                        loopMode.setImageResource(R.drawable.ic_bucle);
+                        break;
+                    case ExoPlayer.REPEAT_MODE_ALL:
+                        player.setRepeatMode(ExoPlayer.REPEAT_MODE_OFF);
+                        loopMode.setAlpha(0.5f);
+                        break;
                 }
             }
         });
