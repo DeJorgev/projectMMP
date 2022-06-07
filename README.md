@@ -56,7 +56,7 @@
   <summary>Tabla de contenido</summary>
   <ol>
     <li>
-      <a href="# 💻Sobre-el-proyecto">Sobre el proyecto</a>
+      <a href="#💻Sobre-el-proyecto">Sobre el proyecto</a>
       <ul>
         <li><a href="#Origenes">Origenes</a></li>
         <li><a href="#¿Por-que-usar-MMP?">¿Por que usar MMP?</a></li>
@@ -76,7 +76,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-##💻Sobre el proyecto
+## 💻Sobre el proyecto
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 <p align = "center">
