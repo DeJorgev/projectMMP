@@ -41,6 +41,8 @@
     Just Music
     <br />
     <br />
+    <a href="https://github.com/DeJorgev/projectMMP/xa"> Android Store</a>
+    ·
     <a href="https://github.com/DeJorgev/projectMMP/issues"> Avisar de un problema </a>
     ·
     <a href="https://github.com/DeJorgev/projectMMP/issues"> Pedir una función </a>
