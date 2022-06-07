@@ -33,8 +33,6 @@
 <div align="center">
   <a href="https://github.com/DeJorgev/projectMMP">
     <img src="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" alt="Logo" width="120" height="120">
-    <img src="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" alt="Logo" width="120" height="120">
-    <img src="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" alt="Logo" width="120" height="120">
   </a>
 
   <h3 align="center">Muse Music Player</h3>
@@ -86,6 +84,8 @@ De amantes de la música programadores para amantes de la música y programadore
 </p>
 <div align="center">
   <a href="https://github.com/DeJorgev/projectMMP/tree/README">
+    <img src="ReadMeImages/allMusic.jpeg" alt="Music" width="236" height="512">
+    <img src="ReadMeImages/controler.jpeg" alt="Music" width="236" height="512">
     <img src="ReadMeImages/allMusic.jpeg" alt="Music" width="236" height="512">
   </a>
 </div>  
