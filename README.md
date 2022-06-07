@@ -89,25 +89,17 @@ Un dia nos cansamos de tragar publicidad, de estar coartados por una version no 
 Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer para el proyecto de fin de grado decidimos acabar con dos problemas de golpe.
 
 ### ¿Por que usar MMP?:
-* Just Music: Si lo unico que quieres hacer es escuchar música no necesitas un reproductor de música que te deje publicar en redes sociales, te venda cosas y te avise que tienes que ir a sacar la basura.
-* Gratuito: ¿A quien no le gusta las cosas gratis? MMP SIEMPRE sera gratis. Si te sientes magnanimo puedes colaborar con un cafe.
-* SIN anuncios: Ni ahora ni nunca.
-* Visual: Nos hemos currado un diseño facil de usar, pero elegante y original.
-* Libre y customizable: Usamos una licencia Apache 2.0, eso significa que puedes hacer lo que quieras con el codigo y crearte tu propio reproductor a partir de este. Tambien venderlo si te apetece.
-* Documentado y simple: Hemos intentado hacer el codigo lo mas legible posible y documentado en javadoc.
+* <b>Just Music: </b> Si lo unico que quieres hacer es escuchar música no necesitas un reproductor de música que te deje publicar en redes sociales, te venda cosas y te avise que tienes que ir a sacar la basura.
+* <b>Gratuito:</b> ¿A quien no le gusta las cosas gratis? MMP SIEMPRE sera gratis. Si te sientes magnanimo puedes colaborar con un cafe.
+* <b>SIN anuncios:</b> Ni ahora ni nunca.
+* <b>Visual:</b> Nos hemos currado un diseño facil de usar, pero elegante y original.
+* <b>Libre y customizable:</b> Usamos una licencia Apache 2.0, eso significa que puedes hacer lo que quieras con el codigo y crearte tu propio reproductor a partir de este. Tambien venderlo si te apetece.
+* <b>Documentado y simple:</b> Hemos intentado hacer el codigo lo mas legible posible y documentado en javadoc.
 
 ### Construido con
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Android](https://Android.com)
+* [Java](https://java.com)
+* [Xml](https://xml.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
