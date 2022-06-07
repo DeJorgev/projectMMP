@@ -56,27 +56,27 @@
   <summary>Tabla de contenido</summary>
   <ol>
     <li>
-      <a href="#Sobre-el-proyecto">Sobre el proyecto</a>
+      <a href="#-Sobre-el-proyecto">Sobre el proyecto</a>
       <ul>
-        <li><a href="#Origenes">Origenes</a></li>
-        <li><a href="#¿Por-que-usar-MMP?">¿Por que usar MMP?</a></li>
-        <li><a href="#Construido-con">Construido con</a></li>
+        <li><a href="#-Origenes">Origenes</a></li>
+        <li><a href="#-¿Por-que-usar-MMP?">¿Por que usar MMP?</a></li>
+        <li><a href="#-Construido-con">Construido con</a></li>
       </ul>
     </li>
-     <li><a href="#Funciones">Funciones</a></li>
+     <li><a href="#-Funciones">Funciones</a></li>
     <li>
-      <a href="#Empezando-a-programar">Empezando a programar</a>
+      <a href="#-Empezando-a-programar">Empezando a programar</a>
     </li>
-    <li><a href="#utilización">Utilización</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#licencia">Licencia</a></li>
+    <li><a href="#-utilización">Utilización</a></li>
+    <li><a href="#-roadmap">Roadmap</a></li>
+    <li><a href="#-licencia">Licencia</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## 💻Sobre el proyecto
+## 💻 Sobre el proyecto
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 <p align = "center">
