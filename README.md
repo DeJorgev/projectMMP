@@ -40,14 +40,10 @@
   <p align="center">
     Just Music
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/DeJorgev/projectMMP/issues"> Avisar de un problema </a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/DeJorgev/projectMMP/issues"> Pedir una función </a>
   </p>
 </div>
 
@@ -58,55 +54,49 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">Sobre el proyecto</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">Construido con</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">Como empezar</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#usage">Utilización</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#license">Licencia</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Sobre el proyecto
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
-<p aling = "center">
+<p align = "center">
 Muse music player es un reproductor de música para moviles Android liviano, sin complicaciones y totalmente gratuito. <br/>
 De amantes de la música programadores para amantes de la música y programadores.
 </p>
 
-###Origenes
+### Origenes
 Un dia nos cansamos de tragar publicidad, de estar coartados por una version no premium o de ser acosados para publicar nuestra nueva canción favorita en una red social. Dejadme ser un melomano antisocial en paz joder, solo quiero escuchar música tranquilo.<br/> <br/>
 
 Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer para el proyecto de fin de grado decidimos acabar con dos problemas de golpe.
 
-###Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+### ¿Por que usar MMP?:
+* Just Music: Si lo unico que quieres hacer es escuchar música no necesitas un reproductor de música que te deje publicar en redes sociales, te venda cosas y te avise que tienes que ir a sacar la basura.
+* Gratuito: ¿A quien no le gusta las cosas gratis? MMP SIEMPRE sera gratis. Si te sientes magnanimo puedes colaborar con un cafe.
+* SIN anuncios: Ni ahora ni nunca.
+* Visual: Nos hemos currado un diseño facil de usar, pero elegante y original.
+* Libre y customizable: Usamos una licencia Apache 2.0, eso significa que puedes hacer lo que quieras con el codigo y crearte tu propio reproductor a partir de este. Tambien venderlo si te apetece.
+* Documentado y simple: Hemos intentado hacer el codigo lo mas legible posible y documentado en javadoc.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-### Built With
+### Construido con
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
@@ -173,8 +163,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
+- [ ] Add Changelog
+- [ ] Add back to top links
 - [ ] Add Additional Templates w/ Examples
 - [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] Multi-language Support
