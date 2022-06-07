@@ -115,11 +115,13 @@ Clona el repositorio a local, abrelo en tu editor android favorito y a trabajar.
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Utilización.
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Selecciona la cancion en tu dispositivo que deseas escuchar, sientate y relajate.<br/>
+Alterna el modo de bucle para que se repita el mismo disco, cancion o conjunto de canciones.<br/>
+Si te apatece echarle un poco de picante siempre puedes activar el modo aleatorio.<br>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Parte del proceso de crear una aplicación consiste en hacer una interfaz de facil uso para los usuarios. si te pierdes es que algo mal hemos hecho, por favor dejanos una issue.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -149,10 +151,11 @@ echale un vistazo a [open issues](https://github.com/DeJorgev/projectMMP/issues)
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Solo mediante la contribucion de vosotros, oh grandes y poderosas mentes programadoras, podremos hacer que este pequeño proyecto evolucione hasta el infinito 
+y conseguir hacerle la competencia a otros grandes reproductores del mercado.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+Si tienes alguna idea que pudiera mejorar el proyecto, por favor crea un fork y cuando lo tengas haz una pull request. O simplemente crea una issue con la tag 
+"mejora". ¡Muchas gracias y si crees que el proyecto merece la pena, dejanos una estrella!
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -161,8 +164,6 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- LICENSE -->
 ## License
