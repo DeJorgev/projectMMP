@@ -53,7 +53,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Tabla de contenido</summary>
   <ol>
     <li>
       <a href="#Sobre-el-proyecto">Sobre el proyecto</a>
