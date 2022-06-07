@@ -83,11 +83,17 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Muse music player es un reproductor de música para moviles Android liviano, sin complicaciones y totalmente gratuito.
+<p aling = "center">
+Muse music player es un reproductor de música para moviles Android liviano, sin complicaciones y totalmente gratuito. <br/>
 De amantes de la música programadores para amantes de la música y programadores.
+</p>
 
-Here's why:
+###Origenes
+Un dia nos cansamos de tragar publicidad, de estar coartados por una version no premium o de ser acosados para publicar nuestra nueva canción favorita en una red social. Dejadme ser un melomano antisocial en paz joder, solo quiero escuchar música tranquilo.<br/> <br/>
+
+Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer para el proyecto de fin de grado decidimos acabar con dos problemas de golpe.
+
+###Here's why:
 * Your time should be focused on creating something amazing. A project that solves a problem and helps others
 * You shouldn't be doing the same tasks over and over like creating a README from scratch
 * You should implement DRY principles to the rest of your life :smile:
