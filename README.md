@@ -84,7 +84,7 @@ De amantes de la música programadores para amantes de la música y programadore
 </p>
 
 ### Origenes
-Un dia nos cansamos de tragar publicidad, de estar coartados por una version no premium o de ser acosados para publicar nuestra nueva canción favorita en una red social. Dejadme ser un melomano antisocial en paz joder, solo quiero escuchar música tranquilo.<br/> <br/>
+Un dia nos cansamos de tragar publicidad, de estar coartados por una version no premium o de ser acosados para publicar nuestra nueva canción favorita en una red social. Dejadme ser un melomano antisocial en paz joder, solo quiero escuchar música tranquilo.<br/> 
 
 Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer para el proyecto de fin de grado decidimos acabar con dos problemas de golpe.
 
