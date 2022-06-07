@@ -82,13 +82,11 @@
 Muse music player es un reproductor de música para moviles Android liviano, sin complicaciones y totalmente gratuito. <br/>
 De amantes de la música programadores para amantes de la música y programadores.
 </p>
-
+<div align="center">
   <a href="https://github.com/DeJorgev/repoimages">
-    <img src="MMP/allMusic.jpeg" alt="Music">
-    <img src="MMP/Album.jpeg" alt="Album">
-    <img src="MMP/Controler.jpeg" alt="Controller">
+    <img src="MMP/allMusic.jpeg" alt="Music" width="80" height="80">
   </a>
-  
+</div>  
   
 ### 👀 Origenes
 Un dia nos cansamos de tragar publicidad, de estar coartados por una version no premium o de ser acosados para publicar nuestra nueva canción favorita en una red social. Dejadme ser un melomano antisocial en paz joder, solo quiero escuchar música tranquilo.<br/> 
