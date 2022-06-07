@@ -125,6 +125,7 @@ Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer
 - Filtrado por disco y artista.
 - Mostrar arte disco.
 - interfaz intuitiva y elegante.
+- seguimiento de musica seleccionada
 
 
 <!-- GETTING STARTED -->
@@ -149,14 +150,13 @@ Parte del proceso de crear una aplicación consiste en hacer una interfaz de fac
 ## 🚗 Roadmap
 - [ ] Subir a Android Store
 - [x] Soporte multilenguaje
-    - [x] english
-    - [x] Spanish
 - [ ] Facilitar lectura de permisos con Splash Screen
 - [ ] Listas de reproducción
 - [ ] Compatibilidad con tabletas Android
 - [ ] Añadir libreria para efectos visuales de canciones
 - [ ] Filtrado de canción por estado animo  
 - [ ] añadir Changelog
+- [ ] Readme Multilenguaje
 - [ ] Add back to top links
 
 
