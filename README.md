@@ -86,8 +86,7 @@ De amantes de la música programadores para amantes de la música y programadore
 <div align="center">
   <a href="https://github.com/DeJorgev/repoimages">
     <img src="MMP/allMusic.jpeg" alt="Music">
-    <img src="MMP/Album.jpeg" alt="Album">
-    <img src="MMP/Controler.jpeg" alt="Controller">
+
   </a>
   
   
