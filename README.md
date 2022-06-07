@@ -133,6 +133,7 @@ Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer
 
 <!-- GETTING STARTED -->
 ## ☕ Empezando a programar
+No necesitas descargar ni activar nada fuera del proyecto.
 Clona el repositorio a local, abrelo en tu editor android favorito y a trabajar.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -144,7 +145,7 @@ Selecciona la cancion en tu dispositivo que deseas escuchar, sientate y relajate
 Alterna el modo de bucle para que se repita el mismo disco, cancion o conjunto de canciones.<br/>
 Si te apatece echarle un poco de picante siempre puedes activar el modo aleatorio.<br>
 
-Parte del proceso de crear una aplicación consiste en hacer una interfaz de facil uso para los usuarios. si te pierdes es que algo mal hemos hecho, por favor dejanos una issue.
+Parte del proceso de crear una aplicación consiste en hacer una interfaz de facil uso para los usuarios. si te pierdes, por favor dejanos una issue para que podamos mejorar.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
