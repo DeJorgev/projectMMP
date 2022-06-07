@@ -33,6 +33,8 @@
 <div align="center">
   <a href="https://github.com/DeJorgev/projectMMP">
     <img src="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" alt="Logo" width="120" height="120">
+    <img src="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" alt="Logo" width="120" height="120">
+    <img src="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" alt="Logo" width="120" height="120">
   </a>
 
   <h3 align="center">Muse Music Player</h3>
