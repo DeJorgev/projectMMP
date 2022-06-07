@@ -105,6 +105,21 @@ Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer
 * [EasyPermissions](https://github.com/googlesamples/easypermissions)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## 💎 Funciones
+- Reproducir música. 🙀 
+- controles.
+  - Siguiente/anterior.
+  - Play/Stop.  
+  - seek bar
+  - seleccion segundo canción
+- Mini controles.
+  - Siguiente/anterior
+  - Play/Stop
+-Diferentes modos bucle.
+-Modo aleatorio.
+- Filtrado por disco y artista.
+- Mostrar arte disco.
+- interfaz intuitiva y elegante.
 
 
 <!-- GETTING STARTED -->
