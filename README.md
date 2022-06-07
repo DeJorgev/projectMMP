@@ -75,7 +75,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## Sobre el proyecto
+##💻 Sobre el proyecto
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 <p align = "center">
@@ -83,12 +83,12 @@ Muse music player es un reproductor de música para moviles Android liviano, sin
 De amantes de la música programadores para amantes de la música y programadores.
 </p>
 
-### Origenes
+###👀 Origenes
 Un dia nos cansamos de tragar publicidad, de estar coartados por una version no premium o de ser acosados para publicar nuestra nueva canción favorita en una red social. Dejadme ser un melomano antisocial en paz joder, solo quiero escuchar música tranquilo.<br/> 
 
 Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer para el proyecto de fin de grado decidimos acabar con dos problemas de golpe.
 
-### ¿Por que usar MMP?:
+###🏆 ¿Por que usar MMP?:
 * <b>Just Music: </b> Si lo unico que quieres hacer es escuchar música no necesitas un reproductor de música que te deje publicar en redes sociales, te venda cosas y te avise que tienes que ir a sacar la basura.
 * <b>Gratuito:</b> ¿A quien no le gusta las cosas gratis? MMP SIEMPRE sera gratis. Si te sientes magnanimo puedes colaborar con un cafe.
 * <b>SIN anuncios:</b> Ni ahora ni nunca.
@@ -98,7 +98,7 @@ Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer
 * <b>Comunidad:</b> Con un poco de trabajo en equipo y el poder de internet este pequeño proyecto puede evolucionar infinitamente. 
 
 
-### Construido con
+###🏢 Construido con
 * [Java](https://java.com)
 * [Android](https://Android.com)
 * [Gilde](https://github.com/bumptech/glide)
@@ -108,12 +108,12 @@ Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer
 
 
 <!-- GETTING STARTED -->
-## Empezando a programar
+##☕ Empezando a programar
 Clona el repositorio a local, abrelo en tu editor android favorito y a trabajar.
 
 
 <!-- USAGE EXAMPLES -->
-## Utilización.
+##📀 Utilización.
 
 Selecciona la cancion en tu dispositivo que deseas escuchar, sientate y relajate.<br/>
 Alterna el modo de bucle para que se repita el mismo disco, cancion o conjunto de canciones.<br/>
@@ -126,7 +126,7 @@ Parte del proceso de crear una aplicación consiste en hacer una interfaz de fac
 
 
 <!-- ROADMAP -->
-## Roadmap
+##🚗 Roadmap
 - [ ] Subir a Android Store
 - [x] Soporte multilenguaje
     - [x] english
@@ -147,7 +147,7 @@ echale un vistazo a [open issues](https://github.com/DeJorgev/projectMMP/issues)
 
 
 <!-- CONTRIBUTING -->
-## Contribución
+##💎 Contribución
 
 Solo mediante la contribucion de vosotros, oh grandes y poderosas mentes programadoras, podremos hacer que este pequeño proyecto evolucione hasta el infinito 
 y conseguir hacerle la competencia a otros grandes reproductores del mercado.
@@ -164,7 +164,7 @@ Si tienes alguna idea que pudiera mejorar el proyecto, por favor crea un fork y 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- LICENSE -->
-## Licencia
+##📜 Licencia
 
 Distribuido con licencia apache 2.0. ver `LICENSE.txt` para mas información.
 
