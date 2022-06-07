@@ -149,7 +149,7 @@ echale un vistazo a [open issues](https://github.com/DeJorgev/projectMMP/issues)
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+## Contribución
 
 Solo mediante la contribucion de vosotros, oh grandes y poderosas mentes programadoras, podremos hacer que este pequeño proyecto evolucione hasta el infinito 
 y conseguir hacerle la competencia a otros grandes reproductores del mercado.
@@ -166,7 +166,7 @@ Si tienes alguna idea que pudiera mejorar el proyecto, por favor crea un fork y 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- LICENSE -->
-## License
+## Licencia
 
 Distribuido con licencia apache 2.0. ver `LICENSE.txt` para mas información.
 
