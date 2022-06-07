@@ -147,7 +147,7 @@ echale un vistazo a [open issues](https://github.com/DeJorgev/projectMMP/issues)
 
 
 <!-- CONTRIBUTING -->
-## 💎 Contribución
+## ❤️ Contribución
 
 Solo mediante la contribucion de vosotros, oh grandes y poderosas mentes programadoras, podremos hacer que este pequeño proyecto evolucione hasta el infinito 
 y conseguir hacerle la competencia a otros grandes reproductores del mercado.
