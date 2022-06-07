@@ -59,7 +59,7 @@
       <a href="#-Sobre-el-proyecto">Sobre el proyecto</a>
       <ul>
         <li><a href="#-Origenes">Origenes</a></li>
-        <li><a href="#-¿Por-que-usar-MMP?">¿Por que usar MMP?</a></li>
+        <li><a href="#-por-que-usar-mmp">¿Por que usar MMP?</a></li>
         <li><a href="#-Construido-con">Construido con</a></li>
       </ul>
     </li>
