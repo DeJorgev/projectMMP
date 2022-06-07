@@ -129,12 +129,12 @@ Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer
 - interfaz intuitiva y elegante.
 - seguimiento de musica seleccionada
 
-
+<p align="right">(<a href="#top">back to top</a>)</p>
 <!-- GETTING STARTED -->
 ## ☕ Empezando a programar
 Clona el repositorio a local, abrelo en tu editor android favorito y a trabajar.
 
-
+<p align="right">(<a href="#top">back to top</a>)</p>
 <!-- USAGE EXAMPLES -->
 ## 📀 Utilización.
 
