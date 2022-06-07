@@ -63,6 +63,7 @@
         <li><a href="#Construido-con">Construido con</a></li>
       </ul>
     </li>
+     <li><a href="#Funciones>Funciones</a></li>
     <li>
       <a href="#Empezando-a-programar">Empezando a programar</a>
     </li>
