@@ -166,6 +166,6 @@ Si tienes alguna idea que pudiera mejorar el proyecto, por favor crea un fork y 
 <!-- LICENSE -->
 ## 📜 Licencia
 
-Distribuido con licencia apache 2.0. ver `LICENSE.txt` para mas información.
+Distribuido con licencia apache 2.0. ver `LICENSE` para mas información.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
