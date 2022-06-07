@@ -84,7 +84,7 @@ De amantes de la música programadores para amantes de la música y programadore
 </p>
 <div align="center">
   <a href="https://github.com/DeJorgev/projectMMP/tree/README">
-    <img src="ReadMeImages/allMusic.jpeg" alt="Music" width="240" height="240">
+    <img src="ReadMeImages/allMusic.jpeg" alt="Music" width="236" height="512">
   </a>
 </div>  
   
