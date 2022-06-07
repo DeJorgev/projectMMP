@@ -89,7 +89,7 @@ Un dia nos cansamos de tragar publicidad, de estar coartados por una version no 
 
 Bajo esta filosofia de "solo música" y aprovechando que algo teniamos que hacer para el proyecto de fin de grado decidimos acabar con dos problemas de golpe.
 
-### 🏆 ¿Por que usar MMP?:
+### 🏆 ¿Por que usar MMP?
 * <b>Just Music: </b> Si lo unico que quieres hacer es escuchar música no necesitas un reproductor de música que te deje publicar en redes sociales, te venda cosas y te avise que tienes que ir a sacar la basura.
 * <b>Gratuito:</b> ¿A quien no le gusta las cosas gratis? MMP SIEMPRE sera gratis. Si te sientes magnanimo puedes colaborar con un cafe.
 * <b>SIN anuncios:</b> Ni ahora ni nunca.
