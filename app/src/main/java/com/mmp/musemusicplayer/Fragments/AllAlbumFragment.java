@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.mmp.musemusicplayer.MainActivity;
 import com.mmp.musemusicplayer.R;
@@ -24,7 +23,6 @@ import java.util.List;
 public class AllAlbumFragment extends Fragment {
 
     private static List<Album> deviceAlbums = MainActivity.getDeviceAlbums();
-    private ListView albumListView;
     private RecyclerView recycler;
 
     public AllAlbumFragment() {
@@ -54,28 +52,12 @@ public class AllAlbumFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        /*albumListView = getView().findViewById(R.id.albumListView);
-        albumListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Album al = deviceAlbums.get(i);
-                AlbumDetail ad_fragment = AlbumDetail.newInstance(al);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_placeholder, ad_fragment)
-                        .addToBackStack(null)
-                        .commit();
-
-            }
-        });*/
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_all_album, container, false);
-        /*albumListView  =  view.findViewById(R.id.albumListView);
-        new ListDisplayer(getActivity()).displayAlbums(albumListView,deviceAlbums);*/
         recycler = view.findViewById(R.id.album_rv);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 

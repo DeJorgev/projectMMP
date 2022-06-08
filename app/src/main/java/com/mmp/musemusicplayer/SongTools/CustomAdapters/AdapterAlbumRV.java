@@ -21,11 +21,11 @@ import java.util.List;
 public class AdapterAlbumRV extends RecyclerView.Adapter<AdapterAlbumRV.ViewHolderAlbum> {
 
     List<Album> allAlbums;
-    Fragment f;
+    Fragment fragment;
 
-    public AdapterAlbumRV(List<Album> allAlbums, Fragment f) {
+    public AdapterAlbumRV(List<Album> allAlbums, Fragment fragment) {
         this.allAlbums = allAlbums;
-        this.f = f;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -42,9 +42,9 @@ public class AdapterAlbumRV extends RecyclerView.Adapter<AdapterAlbumRV.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Album al = allAlbums.get(i);
-                AlbumDetail ad_fragment = AlbumDetail.newInstance(al);
-                f.getActivity().getSupportFragmentManager().beginTransaction()
+                Album album = allAlbums.get(i);
+                AlbumDetail ad_fragment = AlbumDetail.newInstance(album);
+                fragment.getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_placeholder, ad_fragment)
                         .addToBackStack(null)
                         .commit();
@@ -75,7 +75,7 @@ public class AdapterAlbumRV extends RecyclerView.Adapter<AdapterAlbumRV.ViewHold
             artistName.setText(album.getArtistName());
 
             if (album.getSongs().get(0).getAlbumImageUri()!=null) {
-                Glide.with(f)
+                Glide.with(fragment)
                         .load(album.getSongs().get(0).getAlbumImageUri())
                         .fitCenter()
                         .placeholder(R.drawable.ic_default_artimage)

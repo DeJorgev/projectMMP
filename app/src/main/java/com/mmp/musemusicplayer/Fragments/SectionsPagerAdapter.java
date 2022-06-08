@@ -21,26 +21,26 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2,R.string.tab_text_3};
     private final Context mContext;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
-        super(fm);
+    public SectionsPagerAdapter(Context context, FragmentManager fragmentManager) {
+        super(fragmentManager);
         mContext = context;
     }
 
     @Override
     public Fragment getItem(int position) {
-        Fragment f = null;
+        Fragment fragment = null;
         switch (position){
             case 0:
-                f = AllSongsFragment.newInstance();
+                fragment = AllSongsFragment.newInstance();
                 break;
             case 1:
-                f = AllAlbumFragment.newInstance();
+                fragment = AllAlbumFragment.newInstance();
                 break;
             case 2:
-                f = AllArtistsFragment.newInstance();
+                fragment = AllArtistsFragment.newInstance();
                 break;
         }
-        return f;
+        return fragment;
     }
 
     @Nullable

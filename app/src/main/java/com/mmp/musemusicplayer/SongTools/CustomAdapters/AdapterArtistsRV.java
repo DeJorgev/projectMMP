@@ -20,11 +20,11 @@ import java.util.List;
 public class AdapterArtistsRV extends RecyclerView.Adapter<AdapterArtistsRV.ViewHolderArtists> {
 
     List<Artist> allArtists;
-    Fragment f;
+    Fragment fragment;
 
-    public AdapterArtistsRV(List<Artist> allArtists, Fragment f) {
+    public AdapterArtistsRV(List<Artist> allArtists, Fragment fragment) {
         this.allArtists = allArtists;
-        this.f = f;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -41,9 +41,9 @@ public class AdapterArtistsRV extends RecyclerView.Adapter<AdapterArtistsRV.View
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<Album> al = allArtists.get(i).getAlbumList();
-                AllAlbumFragment ad_fragment = AllAlbumFragment.newInstance(al);
-                f.getActivity().getSupportFragmentManager().beginTransaction()
+                List<Album> albums = allArtists.get(i).getAlbumList();
+                AllAlbumFragment ad_fragment = AllAlbumFragment.newInstance(albums);
+                fragment.getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_placeholder, ad_fragment)
                         .addToBackStack(null)
                         .commit();

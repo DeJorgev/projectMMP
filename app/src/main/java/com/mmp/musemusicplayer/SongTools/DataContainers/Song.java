@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Song  implements Parcelable {
-    //Meter aqui los metadatos a sacar 1/4.
     private long id,albumID,artistID;
     private int duration;
     private String name, albumName , artistName;
@@ -55,9 +54,6 @@ public class Song  implements Parcelable {
         return albumID;
     }
 
-    public long getArtistID() {
-        return artistID;
-    }
 
     public int getDuration() {
         return duration;

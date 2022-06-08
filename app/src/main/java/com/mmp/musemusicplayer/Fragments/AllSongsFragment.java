@@ -25,8 +25,6 @@ public class AllSongsFragment extends Fragment {
 
     private static List<Song> deviceSongs = MainActivity.getDeviceSongs();
     private ListView songListView;
-    private ExoPlayer player = MainActivity.getExoPlayer();
-    private boolean playing = MainActivity.isPlaying();
 
     public static AllSongsFragment newInstance() {
         AllSongsFragment fragment = new AllSongsFragment();
@@ -41,7 +39,6 @@ public class AllSongsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all_songs, container, false);
         songListView  =  view.findViewById(R.id.songListView);
         new ListDisplayer(getActivity()).displaySongs(songListView, deviceSongs);
@@ -55,6 +52,7 @@ public class AllSongsFragment extends Fragment {
 
         ListView listview = getView().findViewById(R.id.songListView);
 
+        //Starts playing the song list from the selected
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -62,6 +60,7 @@ public class AllSongsFragment extends Fragment {
             }
         });
 
+        //Correctly updates currently select song in list view metadata
         UtilPlayer.getPlayer().addListener(new Player.Listener() {
             @Override
             public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {

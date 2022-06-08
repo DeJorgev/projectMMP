@@ -4,11 +4,9 @@ import android.Manifest;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,9 +32,12 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-    private Button next;
-    private Button prev;
-    private TextView[] titulos;
+    private TextView[] titles;
+    private ImageButton[] playPause;
+    private ImageButton[] nextButtons;
+    private ImageButton[] previousButtons;
+    private ImageButton random;
+    private ImageButton loopMode;
     private BottomSheetBehavior bottomSheetBehavior;
     private SeekBar seekBar;
     private TextView songDuration;
@@ -50,14 +51,6 @@ public class MainActivity extends AppCompatActivity {
         return deviceSongs;
     }
 
-    private static boolean playing = false;
-    public static boolean isPlaying() {
-        return playing;
-    }
-    public static void setPlaying(boolean playing) {
-        MainActivity.playing = playing;
-    }
-
     private static List<Album> deviceAlbums;
     public static List<Album> getDeviceAlbums() {
         return deviceAlbums;
@@ -69,9 +62,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private static ExoPlayer player;
-    public static ExoPlayer getExoPlayer() {
-        return player;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +69,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Request the user for external storage permison
         if (!EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             EasyPermissions.requestPermissions(MainActivity.this, "Requesting permission to access storage", 102, Manifest.permission.READ_EXTERNAL_STORAGE);
         }
+
+        //fetches the device songs, albums and artists.
         SongFetcher fetcher = new SongFetcher(MainActivity.this);
         deviceSongs = fetcher.manageSongsFetch();
         deviceAlbums = fetcher.getAlbums();
@@ -89,13 +82,13 @@ public class MainActivity extends AppCompatActivity {
 
         player = new ExoPlayer.Builder(this).build();
 
-        titulos = new TextView[]{findViewById(R.id.titulo), findViewById(R.id.text_songName)};
+        titles = new TextView[]{findViewById(R.id.titulo), findViewById(R.id.text_songName)};
 
         FragmentTransaction ft =  getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_placeholder, new TabsFragment());
         ft.commit();
 
-        //Reproductor con slide hacia arriba
+        //Mini player behavior code
         ConstraintLayout bottomLayout = findViewById(R.id.bottomSheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomLayout);
         ConstraintLayout miniplayer = findViewById(R.id.mini_player);
@@ -131,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Fast deploy
         baseLine = findViewById(R.id.baseline);
         baseLine.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Fast undeploy
         baseLineInversed = findViewById(R.id.baselineInversed);
         baseLineInversed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,8 +143,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Boton play/pause
-        ImageButton[] playPause = new ImageButton[]{findViewById(R.id.play_pause), findViewById(R.id.inner_play)};
-        new UtilPlayer(player, playPause, titulos, findViewById(R.id.text_songInfo));
+        playPause = new ImageButton[]{findViewById(R.id.play_pause), findViewById(R.id.inner_play)};
+        new UtilPlayer(player, playPause, titles, findViewById(R.id.text_songInfo));
         for(ImageButton imgBtn : playPause){
             imgBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -160,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Boton siguiente
-        ImageButton[] nexts = new ImageButton[]{findViewById(R.id.next),findViewById(R.id.mini_next)};
-        for(ImageButton imgBtn : nexts){
+        nextButtons = new ImageButton[]{findViewById(R.id.next),findViewById(R.id.mini_next)};
+        for(ImageButton imgBtn : nextButtons){
             imgBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -171,8 +166,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Boton anterior
-        ImageButton[] prevs = new ImageButton[]{findViewById(R.id.prev),findViewById(R.id.mini_previous)};
-        for(ImageButton imgBtn : prevs){
+        previousButtons = new ImageButton[]{findViewById(R.id.prev),findViewById(R.id.mini_previous)};
+        for(ImageButton imgBtn : previousButtons){
             imgBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -182,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Boton random
-        ImageButton random = findViewById(R.id.random);
+        random = findViewById(R.id.random);
         random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Boton loop
-        ImageButton loopMode = findViewById(R.id.loop);
+        loopMode = findViewById(R.id.loop);
         loopMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -205,11 +200,11 @@ public class MainActivity extends AppCompatActivity {
                     case ExoPlayer.REPEAT_MODE_OFF:
                         player.setRepeatMode(ExoPlayer.REPEAT_MODE_ONE);
                         loopMode.setAlpha(1f);
-                        loopMode.setImageResource(R.drawable.ic_bucle_one);
+                        loopMode.setImageResource(R.drawable.ic_loop_one);
                         break;
                     case ExoPlayer.REPEAT_MODE_ONE:
                         player.setRepeatMode(ExoPlayer.REPEAT_MODE_ALL);
-                        loopMode.setImageResource(R.drawable.ic_bucle);
+                        loopMode.setImageResource(R.drawable.ic_loop);
                         break;
                     case ExoPlayer.REPEAT_MODE_ALL:
                         player.setRepeatMode(ExoPlayer.REPEAT_MODE_OFF);
@@ -222,6 +217,9 @@ public class MainActivity extends AppCompatActivity {
         seekBar = findViewById(R.id.seekBar);
         songDuration = findViewById(R.id.songTotalDuration);
         currentSecond = findViewById(R.id.songCurrentSecond);
+
+        //Seekbar - song times
+          //Updates the song time metadata on change
         UtilPlayer.getPlayer().addListener(new Player.Listener() {
             @Override
             public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
@@ -243,7 +241,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            //allows the user to select a second of the song to play from.
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 if(b){
@@ -251,20 +251,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+            //Mandatory interface methods.
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
-
 
     }
 
+    //A thread that updates the seekbar with the current second the song is playing.
     public class UpdateSeekBar implements Runnable{
 
         @Override
@@ -275,10 +272,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void showtoast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
+    //Quite self descriptive
     private void changePlayPauseState(ExoPlayer player, ImageButton[] playPause){
         if (player.isPlaying()) {
             player.pause();
@@ -294,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Various
-    //Overrides using EasyPermissions library for a simpler code. By Google
+        //Overrides using EasyPermissions library for a simpler code. By Google
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -302,7 +296,7 @@ public class MainActivity extends AppCompatActivity {
         // Forward results to EasyPermissions
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
-
+        //Overrides android back button to close the extended mini player without closing the app.
     @Override
     public void onBackPressed() {
         if(bottomSheetBehavior.getState() == bottomSheetBehavior.STATE_EXPANDED)

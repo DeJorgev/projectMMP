@@ -78,6 +78,8 @@ public class AlbumDetail extends Fragment {
             }
         });
 
+        //Correctly updates currently select song in list view metadata
+
         UtilPlayer.getPlayer().addListener(new Player.Listener() {
             @Override
             public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {

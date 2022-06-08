@@ -19,9 +19,9 @@ import java.util.List;
 
 public class AllArtistsFragment extends Fragment {
 
-
     private RecyclerView recycler;
     private List<Artist> allArtists = MainActivity.getDeviceArtist();
+
     public AllArtistsFragment() {
         // Required empty public constructor
     }
@@ -37,10 +37,8 @@ public class AllArtistsFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all_album, container, false);
-        /*albumListView  =  view.findViewById(R.id.albumListView);
-        new ListDisplayer(getActivity()).displayAlbums(albumListView,deviceAlbums);*/
+
         recycler = view.findViewById(R.id.album_rv);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
