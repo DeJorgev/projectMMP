@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
-import com.mmp.musemusicplayer.MainActivity;
 import com.mmp.musemusicplayer.R;
 
 /**
@@ -20,6 +19,7 @@ import com.mmp.musemusicplayer.R;
  * one of the sections/tabs/pages.
  *
  * Basically this class manages the fragment selection.
+ * @author Jorge García
  */
 public class TabsFragment extends Fragment {
 
@@ -28,7 +28,6 @@ public class TabsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static TabsFragment newInstance() {
         TabsFragment fragment = new TabsFragment();
         Bundle args = new Bundle();
@@ -39,12 +38,6 @@ public class TabsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        */
     }
 
     @Override

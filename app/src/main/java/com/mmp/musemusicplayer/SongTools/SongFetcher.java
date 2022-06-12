@@ -6,9 +6,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.util.Log;
+
+import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Artist;
+import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +24,13 @@ import java.util.List;
  *  <li>Borja Abalos</li>
  *  <li>Jorge García.</li>
  * </ul>
- * @version 1.0.0
+ * @version 1.2.0
  */
 
 public class SongFetcher {
     private Context actualClass;
     private List<Album> albums = new ArrayList<>();
+    private List<Artist> artists = new ArrayList<>();
 
     /**
      * Usual constructor.
@@ -54,10 +57,8 @@ public class SongFetcher {
 
         //Executes the Query and saves the selected song´s data in a List
         List<Song> songsList = fetchSongs(songFolderUri, projection, sortOrder);
-
-        Toast debug = Toast.makeText(actualClass, "Number of Songs: " + songsList.size(), Toast.LENGTH_SHORT);
-        debug.show();
-
+        if(songsList != null)
+            Log.e("Hasta aqui",songsList.size()+"");
         return songsList;
     }
 
@@ -89,6 +90,8 @@ public class SongFetcher {
                 MediaStore.Audio.Media.DURATION,
                 MediaStore.Audio.Media.ALBUM_ID,
                 MediaStore.Audio.Media.ALBUM,
+                MediaStore.Audio.Media.ARTIST_ID,
+                MediaStore.Audio.Media.ARTIST,
         };
 
         return projection;
@@ -115,6 +118,8 @@ public class SongFetcher {
             int durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION);
             int albumIDColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID);
             int albumNameColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM);
+            int artistIDColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST_ID);
+            int artistNameColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST);
 
             //getting the actual values for each column of each file read and applied
             while (cursor.moveToNext()) {
@@ -124,6 +129,8 @@ public class SongFetcher {
                 int duration = cursor.getInt(durationColumn);
                 long albumID = cursor.getLong(albumIDColumn);
                 String albumName = cursor.getString(albumNameColumn);
+                long artistID = cursor.getLong(artistIDColumn);
+                String artistName = cursor.getString(artistNameColumn);
 
                 Uri songuri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
                 Uri albumImageUri = ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), albumID);
@@ -132,28 +139,64 @@ public class SongFetcher {
                 name = name.substring(0, name.lastIndexOf("."));
 
                 //Creating and adding song Item to List
-                Song song = new Song(id, albumID, duration, name, albumName, songuri, albumImageUri);
-                addAlbum(song);
+                Song song = new Song(id, albumID,artistID, duration, name, albumName,artistName , songuri, albumImageUri);
+                Album album = addAlbum(song);
+                addArtist(album);
                 songsList.add(song);
+
             }
         }
         return songsList;
     }
 
-    //Provisional
-    private void addAlbum(Song song) {
+
+    private Album addAlbum(Song song) {
         int index = -1;
         for (int i = 0; i < albums.size() && index == -1; ++i) {
             if (albums.get(i).getAlbumID() == song.getAlbumID())
                 index = i;
         }
-        if (index != -1)
+        Album album;
+        if (index != -1) {
             albums.get(index).getSongs().add(song);
-        else
-            albums.add(new Album(song.getAlbumID(), song.getAlbumName(), song));
+            album = albums.get(index);
+
+        }else {
+            album = new Album(song.getAlbumID(), song.getAlbumName(), song, song.getArtistName());
+            albums.add(album);
+        }
+        return album;
+    }
+
+    private void addArtist(Album album){
+        int index = -1;
+        for (int i = 0; i < artists.size() && index == -1; ++i){
+            if(artists.get(i).getArtistName().equals(album.getArtistName()))
+                index = i;
+        }
+        if(index != -1) {
+            Artist artist = artists.get(index);
+            if (!artist.getAlbumList().contains(album)) {
+                if(artist.getImageUri() == null && album.getSongs().get(0).getAlbumImageUri() != null){
+                    artist.setImageUri(album.getSongs().get(0).getAlbumImageUri());
+                }
+                artist.addAlbum(album);
+            }
+        }
+        else {
+            Artist artist = new Artist(album);
+            if(album.getSongs().get(0).getAlbumImageUri() != null){
+                artist.setImageUri(album.getSongs().get(0).getAlbumImageUri());
+            }
+            artists.add(artist);
+        }
     }
 
     public List<Album> getAlbums() {
         return albums;
+    }
+
+    public List<Artist> getArtists() {
+        return artists;
     }
 }
