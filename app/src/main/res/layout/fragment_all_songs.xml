@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".Fragments.AllSongsFragment">
 
     <ListView
-        android:id="@+id/songListView"
+        android:id="@+id/song_list_view"
+        android:choiceMode="singleChoice"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

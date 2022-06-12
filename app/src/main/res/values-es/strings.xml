@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tabs_Description">pestañas</string>
+    <string name="tab_text_1">Canciones</string>
+    <string name="tab_text_2">Album</string>
+    <string name="tab_text_3">Artista</string>
+    <string name="song_name">Nombre Cancion</string>
+    <string name="song_info">Informacion Cancion</string>
+    <string name="contextMiniPlay">Mini iniciar música</string>
+    <string name="contextPlay">Iniciar música</string>
+    <string name="contextStop">Parar música</string>
+    <string name="contextNext">Siguiente canción</string>
+    <string name="contextMiniNext">Mini siguiente canción</string>
+    <string name="contextPrevious">Anterior canción</string>
+    <string name="contextMiniPrevious">Mini anterior canción</string>
+    <string name="contextLoop">Modo de repeticion</string>
+    <string name="contextAleatory">Modo aleatorio</string>
+    <string name="contextArtImage">Arte del album</string>
+    <string name="contextSongName">Nombre de la cancion</string>
+    <plurals name="number_of_songs">
+        <item quantity="one">%d Cancion</item>
+        <item quantity="other">%d Canciones</item>
+    </plurals>
+    <plurals name="number_of_albums">
+        <item quantity="one">%d Album</item>
+        <item quantity="other">%d Albumes</item>
+    </plurals>
+</resources>

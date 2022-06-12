@@ -13,30 +13,34 @@ import com.mmp.musemusicplayer.R;
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
+ * @author Borja Avalos, Jorge García.
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2,R.string.tab_text_3};
     private final Context mContext;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
-        super(fm);
+    public SectionsPagerAdapter(Context context, FragmentManager fragmentManager) {
+        super(fragmentManager);
         mContext = context;
     }
 
     @Override
     public Fragment getItem(int position) {
-        Fragment f = null;
+        Fragment fragment = null;
         switch (position){
             case 0:
-                f = AllSongsFragment.newInstance();
+                fragment = AllSongsFragment.newInstance();
                 break;
             case 1:
-                f = AllAlbumFragment.newInstance();
+                fragment = AllAlbumFragment.newInstance();
+                break;
+            case 2:
+                fragment = AllArtistsFragment.newInstance();
                 break;
         }
-        return f;
+        return fragment;
     }
 
     @Nullable
@@ -48,6 +52,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 2;
+        return 3;
     }
 }
