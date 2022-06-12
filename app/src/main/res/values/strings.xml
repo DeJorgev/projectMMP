@@ -4,6 +4,14 @@
     <string name="tab_text_1">All Songs</string>
     <string name="tab_text_2">Album</string>
     <string name="tab_text_3">Artists</string>
+    <plurals name="number_of_songs">
+        <item quantity="one">%d Song</item>
+        <item quantity="other">%d Songs</item>
+    </plurals>
+    <plurals name="number_of_albums">
+        <item quantity="one">%d Album</item>
+        <item quantity="other">%d Albums</item>
+    </plurals>
 
     <string name="song_name">Song Name</string>
     <string name="song_info">Song info</string>

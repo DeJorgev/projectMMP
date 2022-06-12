@@ -3,7 +3,7 @@ package com.mmp.musemusicplayer.SongTools;
 import android.content.Context;
 import android.widget.ListView;
 
-import com.mmp.musemusicplayer.SongTools.CustomAdapters.CustomSongAdapter;
+import com.mmp.musemusicplayer.SongTools.CustomAdapters.AdapterSongLV;
 import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 
 import java.util.List;
@@ -48,7 +48,7 @@ public class ListDisplayer {
         for (int i = 0; i < songNames.length; i++)
             songNames[i] = songsToDisplay.get(i).getName();
 
-        CustomSongAdapter customSongAdapter = new CustomSongAdapter(songsToDisplay, actualClass);
-        songListView.setAdapter(customSongAdapter);
+        AdapterSongLV adapterSongLV = new AdapterSongLV(songsToDisplay, actualClass);
+        songListView.setAdapter(adapterSongLV);
     }
 }

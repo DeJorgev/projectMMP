@@ -175,12 +175,20 @@ public class SongFetcher {
                 index = i;
         }
         if(index != -1) {
-            if (!artists.get(index).getAlbumList().contains(album)) {
-                artists.get(index).addAlbum(album);
+            Artist artist = artists.get(index);
+            if (!artist.getAlbumList().contains(album)) {
+                if(artist.getImageUri() == null && album.getSongs().get(0).getAlbumImageUri() != null){
+                    artist.setImageUri(album.getSongs().get(0).getAlbumImageUri());
+                }
+                artist.addAlbum(album);
             }
         }
         else {
-            artists.add(new Artist(album));
+            Artist artist = new Artist(album);
+            if(album.getSongs().get(0).getAlbumImageUri() != null){
+                artist.setImageUri(album.getSongs().get(0).getAlbumImageUri());
+            }
+            artists.add(artist);
         }
     }
 

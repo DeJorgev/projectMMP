@@ -1,12 +1,18 @@
 package com.mmp.musemusicplayer;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
 import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,12 +29,17 @@ public class UtilPlayer {
     private static TextView[] songTitlesTv;
     private static TextView songInfo;
     private static List<Song> playingList;
+    private static ImageView playingImage;
+    private static Context context;
 
-    public UtilPlayer(ExoPlayer iPlayer, ImageButton[] iButtonPlay, TextView[] iSongTitlesTv, TextView iSongInfo) {
+    public UtilPlayer(ExoPlayer iPlayer, ImageButton[] iButtonPlay, TextView[] iSongTitlesTv,
+                      TextView iSongInfo, ImageView iPlayingImage, Context iContext) {
         player = iPlayer;
         buttonPlay = iButtonPlay;
         songTitlesTv = iSongTitlesTv;
         songInfo = iSongInfo;
+        context = iContext;
+        playingImage =iPlayingImage;
     }
 
     public static ExoPlayer getPlayer() {
@@ -41,17 +52,18 @@ public class UtilPlayer {
      * @param index    the song selected
      * @param songList
      */
-    public static void startPlayingList(int index, List<Song> songList) {
+    public static void startPlayingList(int index, List<Song> songList, boolean play) {
         playingList = songList;
-        if (player.isPlaying()) {
-            player.clearMediaItems();
-        }
+        player.clearMediaItems();
         loadMediaItems(playingList);
         player.prepare();
         player.seekToDefaultPosition(index);
-        player.play();
-        for (ImageButton ib : buttonPlay) {
-            ib.setImageResource(R.drawable.ic_stop);
+
+        if(play) {
+            player.play();
+            for (ImageButton ib : buttonPlay) {
+                ib.setImageResource(R.drawable.ic_stop);
+            }
         }
     }
 
@@ -80,6 +92,12 @@ public class UtilPlayer {
         for (TextView songTitle : songTitlesTv)
             songTitle.setText(song.getName());
         songInfo.setText(song.getArtistName());
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(),song.getAlbumImageUri());
+            playingImage.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            playingImage.setImageDrawable(context.getDrawable(R.drawable.ic_default_artimage));
+        }
     }
 
     /**

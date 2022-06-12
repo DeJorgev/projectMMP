@@ -21,6 +21,17 @@ import com.google.android.exoplayer2.*;
 
 import java.util.List;
 
+/**
+ * A fragment used to display all albums in a ListView(using AdapterSongLV class
+ * as a adapter)
+ *
+ * @author
+ * <ul>
+ *  <li>Borja Abalos</li>
+ *  <li>Jorge García.</li>
+ * </ul>
+ * @version 1.2.0
+ */
 public class AllSongsFragment extends Fragment {
 
     private static List<Song> deviceSongs = MainActivity.getDeviceSongs();
@@ -40,7 +51,7 @@ public class AllSongsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_all_songs, container, false);
-        songListView  =  view.findViewById(R.id.songListView);
+        songListView  =  view.findViewById(R.id.song_list_view);
         new ListDisplayer(getActivity()).displaySongs(songListView, deviceSongs);
 
         return view;
@@ -50,13 +61,13 @@ public class AllSongsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ListView listview = getView().findViewById(R.id.songListView);
+        ListView listview = getView().findViewById(R.id.song_list_view);
 
         //Starts playing the song list from the selected
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                UtilPlayer.startPlayingList(i, deviceSongs);
+                UtilPlayer.startPlayingList(i, deviceSongs,true);
             }
         });
 

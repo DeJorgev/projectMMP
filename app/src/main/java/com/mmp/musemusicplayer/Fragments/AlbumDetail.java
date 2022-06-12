@@ -1,5 +1,6 @@
 package com.mmp.musemusicplayer.Fragments;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,16 +22,23 @@ import com.mmp.musemusicplayer.SongTools.ListDisplayer;
 import com.mmp.musemusicplayer.UtilPlayer;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link AlbumDetail#newInstance} factory method to
- * create an instance of this fragment.
+ * A fragment that displays the usable info and the songs contained in an album.
+ * Recieves the album that is going to be displayed.
+ *
+ * @author
+ * <ul>
+ *  <li>Borja Abalos</li>
+ *  <li>Jorge García.</li>
+ * </ul>
+ * @version 1.2.0
  */
+
 public class AlbumDetail extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
 
     private Album album;
-    private TextView albumTitle;
+    private TextView albumTitle, artistName, numberOfSongsTV;
     private ListView albumSongsLV;
 
 
@@ -65,8 +73,17 @@ public class AlbumDetail extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        albumTitle = view.findViewById(R.id.albumTitle);
+        albumTitle = view.findViewById(R.id.album_title);
         albumTitle.setText(album.getAlbumName());
+
+        artistName = view.findViewById(R.id.artist_name);
+        artistName.setText(album.getArtistName());
+
+        Resources res = getResources();
+        int numberOfSongs = album.getSongs().size();
+        String songsString = res.getQuantityString(R.plurals.number_of_songs,numberOfSongs, numberOfSongs);
+        numberOfSongsTV = view.findViewById(R.id.songs_number);
+        numberOfSongsTV.setText(songsString);
 
         albumSongsLV = view.findViewById(R.id.album_songs_list_view);
         new ListDisplayer(this.getContext()).displaySongs(albumSongsLV, album.getSongs());
@@ -74,7 +91,7 @@ public class AlbumDetail extends Fragment {
         albumSongsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                UtilPlayer.startPlayingList(i, album.getSongs());
+                UtilPlayer.startPlayingList(i, album.getSongs(),true);
             }
         });
 

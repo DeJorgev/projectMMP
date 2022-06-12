@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bottomSheet"
+    android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
@@ -13,7 +13,7 @@
 
 
     <ImageButton
-        android:id="@+id/baselineInversed"
+        android:id="@+id/baseline_inversed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar"
         app:layout_constraintVertical_bias="0.344"
         app:tint="@color/white" />
 
@@ -75,7 +75,7 @@
         app:layout_constraintEnd_toStartOf="@+id/inner_play"
         app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar"
         app:layout_constraintVertical_bias="1.0"
         app:tint="@color/white"
         tools:ignore="DuplicateSpeakableTextCheck" />
@@ -95,7 +95,7 @@
         app:layout_constraintEnd_toStartOf="@+id/inner_play"
         app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar"
         app:layout_constraintVertical_bias="1.0"
         app:tint="@color/white"
         tools:ignore="TouchTargetSizeCheck" />
@@ -113,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toEndOf="@+id/inner_play"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar"
         app:layout_constraintVertical_bias="1.0"
         app:tint="@color/white"
         tools:ignore="DuplicateSpeakableTextCheck" />
@@ -133,7 +133,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toEndOf="@+id/inner_play"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar"
         app:layout_constraintVertical_bias="1.0"
         app:tint="@color/white"
         tools:ignore="TouchTargetSizeCheck" />
@@ -269,7 +269,7 @@
 
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/seek_bar"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:progressBackgroundTint="@color/white"
@@ -282,7 +282,7 @@
         app:layout_constraintVertical_bias="0.123" />
 
     <TextView
-        android:id="@+id/songCurrentSecond"
+        android:id="@+id/song_current_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
@@ -292,11 +292,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/songTotalDuration"
+        android:id="@+id/song_total_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
@@ -306,7 +306,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.856"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar"
         app:layout_constraintVertical_bias="0.0" />
 
 

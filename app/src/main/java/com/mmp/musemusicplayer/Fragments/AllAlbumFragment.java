@@ -20,6 +20,17 @@ import com.mmp.musemusicplayer.SongTools.CustomAdapters.AdapterAlbumRV;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A fragment used to display all albums in a recycler view(using AdapterAlbumRV class
+ * as a adapter)
+ *
+ * @author
+ * <ul>
+ *  <li>Borja Abalos</li>
+ *  <li>Jorge García.</li>
+ * </ul>
+ * @version 1.2.0
+ */
 public class AllAlbumFragment extends Fragment {
 
     private static List<Album> deviceAlbums = MainActivity.getDeviceAlbums();
@@ -34,16 +45,6 @@ public class AllAlbumFragment extends Fragment {
         Bundle args = new Bundle();
         ArrayList<Album> listAlbums = new ArrayList<>();
         listAlbums.addAll(deviceAlbums);
-        args.putParcelableArrayList("albums", listAlbums);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public static AllAlbumFragment newInstance(List<Album> albums) {
-        AllAlbumFragment fragment = new AllAlbumFragment();
-        Bundle args = new Bundle();
-        ArrayList<Album> listAlbums = new ArrayList<>();
-        listAlbums.addAll(albums);
         args.putParcelableArrayList("albums", listAlbums);
         fragment.setArguments(args);
         return fragment;

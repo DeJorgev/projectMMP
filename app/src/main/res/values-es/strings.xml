@@ -17,4 +17,12 @@
     <string name="contextAleatory">Modo aleatorio</string>
     <string name="contextArtImage">Arte del album</string>
     <string name="contextSongName">Nombre de la cancion</string>
+    <plurals name="number_of_songs">
+        <item quantity="one">%d Cancion</item>
+        <item quantity="other">%d Canciones</item>
+    </plurals>
+    <plurals name="number_of_albums">
+        <item quantity="one">%d Album</item>
+        <item quantity="other">%d Albumes</item>
+    </plurals>
 </resources>

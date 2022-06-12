@@ -89,16 +89,16 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
 
         //Mini player behavior code
-        ConstraintLayout bottomLayout = findViewById(R.id.bottomSheet);
+        ConstraintLayout bottomLayout = findViewById(R.id.bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomLayout);
-        ConstraintLayout miniplayer = findViewById(R.id.mini_player);
+        ConstraintLayout miniPlayer = findViewById(R.id.mini_player);
         bottomSheetBehavior.addBottomSheetCallback(
                 new BottomSheetBehavior.BottomSheetCallback() {
                     @Override
                     public void onStateChanged(@NonNull View bottomSheet, int newState) {
                         switch (newState) {
                             case BottomSheetBehavior.STATE_EXPANDED:
-                                miniplayer.setVisibility(View.INVISIBLE);
+                                miniPlayer.setVisibility(View.INVISIBLE);
                                 break;
                         }
                     }
@@ -108,10 +108,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onSlide(@NonNull View bottomSheet, float slideOffset) {
                         float alpha = 1 - slideOffset;
                         if (slideAnterior < slideOffset)
-                            miniplayer.setAlpha(slideOffset);
+                            miniPlayer.setAlpha(slideOffset);
                         else
-                            miniplayer.setVisibility(View.VISIBLE);
-                        miniplayer.setAlpha(alpha);
+                            miniPlayer.setVisibility(View.VISIBLE);
+                        miniPlayer.setAlpha(alpha);
                         slideAnterior = slideOffset;
                     }
                 }
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Fast undeploy
-        baseLineInversed = findViewById(R.id.baselineInversed);
+        baseLineInversed = findViewById(R.id.baseline_inversed);
         baseLineInversed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,9 +142,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Boton play/pause
+        //Button play/pause
         playPause = new ImageButton[]{findViewById(R.id.play_pause), findViewById(R.id.inner_play)};
-        new UtilPlayer(player, playPause, titles, findViewById(R.id.text_songInfo));
+        new UtilPlayer(player, playPause, titles, findViewById(R.id.text_songInfo), findViewById(R.id.playing_image),this);
         for(ImageButton imgBtn : playPause){
             imgBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        //Boton siguiente
+        //Button next
         nextButtons = new ImageButton[]{findViewById(R.id.next),findViewById(R.id.mini_next)};
         for(ImageButton imgBtn : nextButtons){
             imgBtn.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        //Boton anterior
+        //Button previous
         previousButtons = new ImageButton[]{findViewById(R.id.prev),findViewById(R.id.mini_previous)};
         for(ImageButton imgBtn : previousButtons){
             imgBtn.setOnClickListener(new View.OnClickListener() {
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        //Boton random
+        //Button random
         random = findViewById(R.id.random);
         random.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Boton loop
+        //Button loop
         loopMode = findViewById(R.id.loop);
         loopMode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,9 +214,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        seekBar = findViewById(R.id.seekBar);
-        songDuration = findViewById(R.id.songTotalDuration);
-        currentSecond = findViewById(R.id.songCurrentSecond);
+        seekBar = findViewById(R.id.seek_bar);
+        songDuration = findViewById(R.id.song_total_duration);
+        currentSecond = findViewById(R.id.song_current_second);
 
         //Seekbar - song times
           //Updates the song time metadata on change
@@ -259,6 +259,11 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
+        //By default loads all the song starting by the first one
+        if(deviceSongs.size() > 0) {
+            UtilPlayer.startPlayingList(0, deviceSongs, false);
+            UtilPlayer.updatePlayerMetadata(0);
+        }
     }
 
     //A thread that updates the seekbar with the current second the song is playing.

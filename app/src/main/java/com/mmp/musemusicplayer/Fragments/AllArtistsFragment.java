@@ -17,6 +17,18 @@ import com.mmp.musemusicplayer.SongTools.CustomAdapters.AdapterArtistsRV;
 
 import java.util.List;
 
+/**
+ * A fragment used to display all artists in a recycler view(using AdapterArtistRV class
+ * as a adapter)
+ *
+ * @author
+ * <ul>
+ *  <li>Borja Abalos</li>
+ *  <li>Jorge García.</li>
+ * </ul>
+ * @version 1.2.0
+ */
+
 public class AllArtistsFragment extends Fragment {
 
     private RecyclerView recycler;

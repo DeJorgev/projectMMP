@@ -9,7 +9,7 @@
     android:layout_marginStart="8dp">
 
     <RelativeLayout
-        android:id="@+id/itemlayout"
+        android:id="@+id/item_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/selected"
@@ -17,7 +17,7 @@
         >
 
         <ImageView
-            android:id="@+id/itemalbumart"
+            android:id="@+id/item_albumart"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
@@ -33,14 +33,14 @@
             app:layout_constraintDimensionRatio="1:1" />
 
         <TextView
-            android:id="@+id/itemsongname"
+            android:id="@+id/item_song_name"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="5dp"
-            android:layout_toEndOf="@+id/itemalbumart"
+            android:layout_toEndOf="@+id/item_albumart"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:padding="6dp"
@@ -53,14 +53,14 @@
         </TextView>
 
         <TextView
-            android:id="@+id/iteminfoname"
+            android:id="@+id/item_info_name"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
-            android:layout_toEndOf="@+id/itemalbumart"
+            android:layout_toEndOf="@+id/item_albumart"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:padding="6dp"

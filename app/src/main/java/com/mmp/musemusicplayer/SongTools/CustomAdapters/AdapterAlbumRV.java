@@ -17,7 +17,13 @@ import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
 
 import java.util.List;
 
-// TODO pensar si unificar los adapter
+/**
+ *  An adapter that loads a customized item view to use to display the albums into a recycler view.
+ *  Needs a List of albums and the fragment in which is inflated.
+ *
+ * @author Borja Avalos, Jorge García
+ * @version 1.1.0
+ **/
 public class AdapterAlbumRV extends RecyclerView.Adapter<AdapterAlbumRV.ViewHolderAlbum> {
 
     List<Album> allAlbums;
@@ -45,6 +51,12 @@ public class AdapterAlbumRV extends RecyclerView.Adapter<AdapterAlbumRV.ViewHold
                 Album album = allAlbums.get(i);
                 AlbumDetail ad_fragment = AlbumDetail.newInstance(album);
                 fragment.getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(
+                                R.anim.slide_in,
+                                R.anim.fade_out,
+                                R.anim.fade_in,
+                                R.anim.slide_out
+                        )
                         .replace(R.id.fragment_placeholder, ad_fragment)
                         .addToBackStack(null)
                         .commit();

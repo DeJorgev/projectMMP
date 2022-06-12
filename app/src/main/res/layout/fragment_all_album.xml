@@ -6,12 +6,6 @@
     tools:context=".Fragments.AllAlbumFragment"
     android:background="@color/black">
 
-    <!--<ListView
-        android:id="@+id/albumListView"
-        android:choiceMode="singleChoice"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/album_rv"
         android:layout_width="match_parent"

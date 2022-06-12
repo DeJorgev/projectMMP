@@ -22,12 +22,12 @@ import java.util.List;
   * @author Borja Avalos, Jorge García
   * @version 1.1.0
  **/
-public class CustomSongAdapter extends BaseAdapter {
+public class AdapterSongLV extends BaseAdapter {
     List<Song> songs;
     LayoutInflater inflater;
     Context context;
 
-    public CustomSongAdapter(List songs, Context context) {
+    public AdapterSongLV(List songs, Context context) {
         this.songs = songs;
         this.context = context;
         Activity activity = (Activity) context;
@@ -64,13 +64,13 @@ public class CustomSongAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View myView = inflater.inflate(R.layout.itemlist_item, null);
 
-        TextView textSongName = myView.findViewById(R.id.itemsongname);
+        TextView textSongName = myView.findViewById(R.id.item_song_name);
         textSongName.setText(songs.get(i).getName());
 
-        TextView textSongInfo = myView.findViewById(R.id.iteminfoname);
+        TextView textSongInfo = myView.findViewById(R.id.item_info_name);
         textSongInfo.setText(songs.get(i).getAlbumName() + " - " + songs.get(i).getArtistName());
 
-        ImageView albumArt = myView.findViewById(R.id.itemalbumart);
+        ImageView albumArt = myView.findViewById(R.id.item_albumart);
         if (songs.get(i).getAlbumImageUri()!=null) {
             Glide.with(context)
                     .load(songs.get(i).getAlbumImageUri())
