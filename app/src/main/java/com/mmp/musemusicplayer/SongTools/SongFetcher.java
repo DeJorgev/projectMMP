@@ -58,7 +58,7 @@ public class SongFetcher {
         //Executes the Query and saves the selected song´s data in a List
         List<Song> songsList = fetchSongs(songFolderUri, projection, sortOrder);
         if(songsList != null)
-            Log.e("Hasta aqui",songsList.size()+"");
+            Log.e("Current songs",songsList.size()+"");
         return songsList;
     }
 
@@ -84,7 +84,6 @@ public class SongFetcher {
      */
     private String[] projectionFabric() {
         String[] projection = new String[]{
-                //Meter aqui los metadatos a sacar 2/4.
                 MediaStore.Audio.Media._ID,
                 MediaStore.Audio.Media.DISPLAY_NAME,
                 MediaStore.Audio.Media.DURATION,
@@ -112,7 +111,6 @@ public class SongFetcher {
         //Querying
         try (Cursor cursor = actualClass.getContentResolver().query(songFolderUri, projection, null, null, sortOrder)) {
             //Columns in the Query
-            //Meter aqui los metadatos a sacar 3/4.
             int idColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID);
             int nameColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DISPLAY_NAME);
             int durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION);
@@ -123,7 +121,6 @@ public class SongFetcher {
 
             //getting the actual values for each column of each file read and applied
             while (cursor.moveToNext()) {
-                //Meter aqui los metadatos a sacar 4/4.
                 long id = cursor.getLong(idColumn);
                 String name = cursor.getString(nameColumn);
                 int duration = cursor.getInt(durationColumn);
