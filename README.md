@@ -162,7 +162,6 @@ Parte del proceso de crear una aplicación consiste en hacer una interfaz de fac
 - [ ] Filtrado de canción por estado animo  
 - [ ] añadir Changelog
 - [ ] Readme Multilenguaje
-- [ ] Add back to top links
 
 
 echale un vistazo a [open issues](https://github.com/DeJorgev/projectMMP/issues) para una lista completa de funciones sugeridas (y problemas encontrados).
