@@ -3,6 +3,7 @@ package com.mmp.musemusicplayer.SongTools;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
@@ -12,6 +13,7 @@ import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
 import com.mmp.musemusicplayer.SongTools.DataContainers.Artist;
 import com.mmp.musemusicplayer.SongTools.DataContainers.Song;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -174,7 +176,14 @@ public class SongFetcher {
         if(index != -1) {
             Artist artist = artists.get(index);
             if (!artist.getAlbumList().contains(album)) {
-                if(artist.getImageUri() == null && album.getSongs().get(0).getAlbumImageUri() != null){
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(actualClass.getContentResolver(), album.getSongs().get(0).getAlbumImageUri() );
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if(artist.getImageUri() == null && bitmap != null){
                     artist.setImageUri(album.getSongs().get(0).getAlbumImageUri());
                 }
                 artist.addAlbum(album);
@@ -182,11 +191,17 @@ public class SongFetcher {
         }
         else {
             Artist artist = new Artist(album);
-            if(album.getSongs().get(0).getAlbumImageUri() != null){
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(actualClass.getContentResolver(), album.getSongs().get(0).getAlbumImageUri() );
                 artist.setImageUri(album.getSongs().get(0).getAlbumImageUri());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
             artists.add(artist);
         }
+
+
     }
 
     public List<Album> getAlbums() {
