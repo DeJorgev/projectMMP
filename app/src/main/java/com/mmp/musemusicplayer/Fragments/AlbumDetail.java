@@ -1,16 +1,19 @@
 package com.mmp.musemusicplayer.Fragments;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +23,8 @@ import com.mmp.musemusicplayer.R;
 import com.mmp.musemusicplayer.SongTools.DataContainers.Album;
 import com.mmp.musemusicplayer.SongTools.ListDisplayer;
 import com.mmp.musemusicplayer.UtilPlayer;
+
+import java.io.IOException;
 
 /**
  * A fragment that displays the usable info and the songs contained in an album.
@@ -39,6 +44,7 @@ public class AlbumDetail extends Fragment {
 
     private Album album;
     private TextView albumTitle, artistName, numberOfSongsTV;
+    private ImageView artistImage;
     private ListView albumSongsLV;
 
 
@@ -84,6 +90,16 @@ public class AlbumDetail extends Fragment {
         String songsString = res.getQuantityString(R.plurals.number_of_songs,numberOfSongs, numberOfSongs);
         numberOfSongsTV = view.findViewById(R.id.songs_number);
         numberOfSongsTV.setText(songsString);
+
+
+        artistImage = view.findViewById(R.id.artist_image);
+        Bitmap bitmap = null;
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), album.getSongs().get(0).getAlbumImageUri());
+            artistImage.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         albumSongsLV = view.findViewById(R.id.album_songs_list_view);
         new ListDisplayer(this.getContext()).displaySongs(albumSongsLV, album.getSongs());
