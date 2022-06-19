@@ -19,7 +19,7 @@ import java.util.List;
   *  An adapter that loads a customized item view to use to display the songs in a list views.
   *  Needs a List and an inflater.
   *
-  * @author Borja Avalos, Jorge García
+  * @author Borja Avalos, Jorge Garcia
   * @version 1.1.0
  **/
 public class AdapterSongLV extends BaseAdapter {

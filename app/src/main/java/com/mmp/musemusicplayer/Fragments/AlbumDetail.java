@@ -32,8 +32,8 @@ import java.io.IOException;
  *
  * @author
  * <ul>
- *  <li>Borja Abalos</li>
- *  <li>Jorge García.</li>
+ *  <li>Borja Avalos</li>
+ *  <li>Jorge Garcia.</li>
  * </ul>
  * @version 1.2.0
  */

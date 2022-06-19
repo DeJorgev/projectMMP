@@ -21,7 +21,7 @@ import java.util.List;
  *  An adapter that loads a customized item view to use to display the albums into a recycler view.
  *  Needs a List of albums and the fragment in which is inflated.
  *
- * @author Borja Avalos, Jorge García
+ * @author Borja Avalos, Jorge Garcia
  * @version 1.1.0
  **/
 public class AdapterAlbumRV extends RecyclerView.Adapter<AdapterAlbumRV.ViewHolderAlbum> {

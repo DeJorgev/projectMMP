@@ -13,7 +13,7 @@ import com.mmp.musemusicplayer.R;
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
- * @author Borja Avalos, Jorge García.
+ * @author Borja Avalos, Jorge Garcia.
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

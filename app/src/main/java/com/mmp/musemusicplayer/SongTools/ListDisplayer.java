@@ -16,7 +16,7 @@ public class ListDisplayer {
      *
      * @author
      *  <ul>
-     *      <li>Borja Abalos</li>
+     *      <li>Borja Avalos</li>
      *      <li>Jorge García.</li>
      *  </ul>
      * @version 1.0.0.
